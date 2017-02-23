@@ -106,6 +106,20 @@ SFSpeechRecognizerDelegate  {
             let attributedString = NSMutableAttributedString(string:self.card.name)
             attributedString.addAttribute(NSForegroundColorAttributeName, value: UIColor.red , range: NSRange(location: 0, length: self.card.name.characters.count))
             
+            var i = 0
+            for transcription in result.transcriptions {
+                transcription.segments.forEach {
+                    print("--- SEGMENT\(i) ---")
+                    print("substring            : \($0.substring)")
+                    print("timestamp            : \($0.timestamp)")
+                    print("duration             : \($0.duration)")
+                    print("confidence           : \($0.confidence)")
+                    print("alternativeSubstrings: \($0.alternativeSubstrings)")
+                    print("")
+                }
+                i = i + 1
+            }
+            
             result.bestTranscription.segments.forEach {
                 print("--- SEGMENT ---")
                 print("substring            : \($0.substring)")

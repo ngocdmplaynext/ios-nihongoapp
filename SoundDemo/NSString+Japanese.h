@@ -46,6 +46,8 @@ typedef enum{
 // Kanji
 -(NSString*)stringByReplacingJapaneseKanjiWithHiragana;
 
+-(NSArray *)stringToTokenize;
+
 
 
 // very RUDIMENTARY 'sounds like' comparison of two japanese strings

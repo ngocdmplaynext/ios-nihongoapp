@@ -335,6 +335,31 @@ char_class getCharClass(unichar c){
     
 
 }
+
+-(NSArray *)stringToTokenize {
+    NSMutableArray *array = [[NSMutableArray alloc] init];
+    CFStringTokenizerRef tok = CFStringTokenizerCreate(NULL,
+                                                       (CFStringRef)self,
+                                                       CFRangeMake(0,self.length),
+                                                       kCFStringTokenizerUnitWord,
+                                                       CFLocaleCreate(kCFAllocatorDefault, CFSTR("Japanese")));
+    
+    CFStringTokenizerTokenType result  =CFStringTokenizerAdvanceToNextToken(tok);
+    
+    while(result !=kCFStringTokenizerTokenNone){
+        
+        CFRange currentRange = CFStringTokenizerGetCurrentTokenRange(tok);
+        NSString* subString = [self substringWithRange:NSMakeRange(currentRange.location, currentRange.length)];
+        [array addObject:subString];
+        
+        result =CFStringTokenizerAdvanceToNextToken(tok);
+    }
+    
+    CFRelease(tok);
+    
+    
+    return [array copy];
+}
 #pragma mark - Phonetic Methods
 //
 //
