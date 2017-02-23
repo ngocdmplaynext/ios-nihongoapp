@@ -29,7 +29,7 @@ class ViewController: UIViewController {
 
     func initData() {
         var decks = [Deck]()
-        let card = Card(name: "あ久しぶり", bestScore: 0)
+        let card = Card(name: "あ！久しぶり！", bestScore: 0)
         let card1 = Card(name: "おはよう", bestScore: 0)
         let card2 = Card(name: "良い一日を", bestScore: 0)
         let card3 = Card(name: "調子どう", bestScore: 0)

@@ -15,6 +15,7 @@ extension String {
         }
         return nil
     }
+    
     func indexes(of string: String, options: String.CompareOptions = .literal) -> [String.Index] {
         var result: [String.Index] = []
         var start = startIndex
@@ -24,11 +25,14 @@ extension String {
         }
         return result
     }
-    func ranges(of string: String, options: String.CompareOptions = .literal) -> [Range<String.Index>] {
-        var result: [Range<String.Index>] = []
+    
+    func ranges(of string: String, options: String.CompareOptions = .literal) -> [NSRange] {
+        var result: [NSRange] = []
         var start = startIndex
         while let range = range(of: string, options: options, range: start..<endIndex) {
-            result.append(range)
+            let location = distance(from: startIndex, to: range.lowerBound)
+            let length = distance(from: string.startIndex, to: string.endIndex)
+            result.append(NSRange(location: location, length: length))
             start = range.upperBound
         }
         return result

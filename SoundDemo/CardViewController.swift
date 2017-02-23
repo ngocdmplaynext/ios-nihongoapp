@@ -103,8 +103,20 @@ SFSpeechRecognizerDelegate  {
             var count: Int = 0
             var currentIndex: Int = 0
             var numberCharFinded: Int = 0
-            let attributedString = NSMutableAttributedString(string:self.card.name)
-            attributedString.addAttribute(NSForegroundColorAttributeName, value: UIColor.red , range: NSRange(location: 0, length: self.card.name.characters.count))
+            
+            let symbols = ["！","、","。","？"]
+//            var wrongRanges: [NSRange] = [NSRange]()
+//            var correctRanges: [NSRange] = [NSRange]()
+            let textStr = self.card.name
+            let attributedString = NSMutableAttributedString(string:textStr)
+            attributedString.addAttribute(NSForegroundColorAttributeName, value: UIColor.red , range: NSRange(location: 0, length: textStr.characters.count))
+            //find all symbol string
+            for symbol in symbols {
+                let ranges = textStr.ranges(of: symbol)
+                for range in ranges {
+                    attributedString.addAttribute(NSForegroundColorAttributeName, value: UIColor.black, range: range)
+                }
+            }
             
             var i = 0
             for transcription in result.transcriptions {
@@ -130,7 +142,7 @@ SFSpeechRecognizerDelegate  {
                 print("")
                 
                 
-                let str = self.card.name.subStr(from: currentIndex)
+                let str = textStr.subStr(from: currentIndex)
                 
                 if str != "" {
                     let subStr = $0.substring
@@ -163,10 +175,16 @@ SFSpeechRecognizerDelegate  {
             if score > 100 {
                 score = 100
             }
-            score = score * (Float(numberCharFinded) / Float(self.card.name.characters.count))
+            score = score * (Float(numberCharFinded) / Float(textStr.characters.count))
             
             self.lbScore.text = "\(score)"
             self.lbResult.attributedText = attributedString
+            
+            attributedString.enumerateAttribute(NSForegroundColorAttributeName, in: NSRange(location: 0, length: textStr.characters.count), options: [], using: { (object, ran, _) in
+                if let deviceColor = object as? UIColor, deviceColor == UIColor.red {
+                    
+                }
+            })
             
         }
     
