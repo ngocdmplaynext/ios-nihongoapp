@@ -6,3 +6,4 @@
 #import "SWRevealViewController.h"
 #import "MeCabUtil.h"
 #import "Node.h"
+#import "YYText.h"
