@@ -226,7 +226,7 @@ char_class getCharClass(unichar c){
     CFStringTokenizerRef tok = CFStringTokenizerCreate(NULL,
                                                        (CFStringRef)self,
                                                        CFRangeMake(0,self.length),
-                                                       kCFStringTokenizerUnitWord,
+                                                       kCFStringTokenizerUnitWordBoundary,
                                                        CFLocaleCreate(kCFAllocatorDefault, CFSTR("Japanese")));
     // goto the first token in the string
     CFStringTokenizerTokenType result  =CFStringTokenizerAdvanceToNextToken(tok);

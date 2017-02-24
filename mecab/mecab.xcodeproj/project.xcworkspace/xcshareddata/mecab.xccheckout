@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>C4B4B926-DE90-4995-8D0A-CF978ABF4A8B</string>
+	<key>IDESourceControlProjectName</key>
+	<string>mecab</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>6BA2D6E9D5C27E07078BA568631D2FAF295E616D</key>
+		<string>https://github.com/landonepps/mecab-ios</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>mecab/mecab.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>6BA2D6E9D5C27E07078BA568631D2FAF295E616D</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/landonepps/mecab-ios</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>6BA2D6E9D5C27E07078BA568631D2FAF295E616D</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>6BA2D6E9D5C27E07078BA568631D2FAF295E616D</string>
+			<key>IDESourceControlWCCName</key>
+			<string>mecab-ios</string>
+		</dict>
+	</array>
+</dict>
+</plist>

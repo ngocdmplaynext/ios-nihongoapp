@@ -17,6 +17,15 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        let text = "挨拶"
+        
+        let mecab = MeCabUtil()
+        let arr = mecab.parseToNode(with: text)
+        
+        for item in arr! {
+            print("\((item as! Node).pronunciation())")
+        }
+        
         if revealViewController() != nil {
             menuBtn.target = revealViewController()
             menuBtn.action = #selector(SWRevealViewController.revealToggle(_:))
@@ -36,7 +45,7 @@ class ViewController: UIViewController {
         let card4 = Card(name: "やっと会えて嬉しいわ", bestScore: 0)
         let card5 = Card(name: "もう行くね", bestScore: 0)
         
-        decks.append(Deck(name: "あ久しぶり", card: card))
+        decks.append(Deck(name: "あ！久しぶり！", card: card))
         decks.append(Deck(name: "おはよう", card: card1))
         decks.append(Deck(name: "良い一日を", card: card2))
         decks.append(Deck(name: "調子どう", card: card3))

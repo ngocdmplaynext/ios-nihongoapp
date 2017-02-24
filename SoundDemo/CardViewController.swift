@@ -118,19 +118,19 @@ SFSpeechRecognizerDelegate  {
                 }
             }
             
-            var i = 0
-            for transcription in result.transcriptions {
-                transcription.segments.forEach {
-                    print("--- SEGMENT\(i) ---")
-                    print("substring            : \($0.substring)")
-                    print("timestamp            : \($0.timestamp)")
-                    print("duration             : \($0.duration)")
-                    print("confidence           : \($0.confidence)")
-                    print("alternativeSubstrings: \($0.alternativeSubstrings)")
-                    print("")
-                }
-                i = i + 1
-            }
+//            var i = 0
+//            for transcription in result.transcriptions {
+//                transcription.segments.forEach {
+//                    print("--- SEGMENT\(i) ---")
+//                    print("substring            : \($0.substring)")
+//                    print("timestamp            : \($0.timestamp)")
+//                    print("duration             : \($0.duration)")
+//                    print("confidence           : \($0.confidence)")
+//                    print("alternativeSubstrings: \($0.alternativeSubstrings)")
+//                    print("")
+//                }
+//                i = i + 1
+//            }
             
             result.bestTranscription.segments.forEach {
                 print("--- SEGMENT ---")
