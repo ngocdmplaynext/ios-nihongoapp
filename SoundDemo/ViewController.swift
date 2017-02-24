@@ -13,17 +13,18 @@ class ViewController: UIViewController {
     @IBOutlet weak var menuBtn: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
     var themes = [Theme]()
+    let mecab = MeCabUtil()
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        let text = "挨拶"
+        self.title = "カテゴリー"
         
-        let mecab = MeCabUtil()
+        let text = "ドシャ降りだ"
         let arr = mecab.parseToNode(with: text)
         
         for item in arr! {
-            print("\((item as! Node).pronunciation())")
+            print("\((item as! Node).feature)")
         }
         
         if revealViewController() != nil {
@@ -38,12 +39,12 @@ class ViewController: UIViewController {
 
     func initData() {
         var decks = [Deck]()
-        let card = Card(name: "あ！久しぶり！", bestScore: 0)
-        let card1 = Card(name: "おはよう", bestScore: 0)
-        let card2 = Card(name: "良い一日を", bestScore: 0)
-        let card3 = Card(name: "調子どう", bestScore: 0)
-        let card4 = Card(name: "やっと会えて嬉しいわ", bestScore: 0)
-        let card5 = Card(name: "もう行くね", bestScore: 0)
+        let card = Card(name: "あ！久しぶり！", romaji: mecab.stringJapanese(toRomaji: "あ！久しぶり！"), bestScore: 0)
+        let card1 = Card(name: "おはよう", romaji: mecab.stringJapanese(toRomaji: "おはよう"), bestScore: 0)
+        let card2 = Card(name: "良い一日を", romaji: mecab.stringJapanese(toRomaji: "良い一日を"), bestScore: 0)
+        let card3 = Card(name: "調子どう", romaji: mecab.stringJapanese(toRomaji: "調子どう"), bestScore: 0)
+        let card4 = Card(name: "やっと会えて嬉しいわ", romaji: mecab.stringJapanese(toRomaji: "やっと会えて嬉しいわ"), bestScore: 0)
+        let card5 = Card(name: "もう行くね", romaji: mecab.stringJapanese(toRomaji: "もう行くね"), bestScore: 0)
         
         decks.append(Deck(name: "あ！久しぶり！", card: card))
         decks.append(Deck(name: "おはよう", card: card1))
@@ -56,12 +57,12 @@ class ViewController: UIViewController {
         
         
         var decks1 = [Deck]()
-        let card01 = Card(name: "ドシャ降りだ", bestScore: 0)
-        let card11 = Card(name: "人の好みはそれぞれだ", bestScore: 0)
-        let card21 = Card(name: "聞いていますよ", bestScore: 0)
-        let card31 = Card(name: "今日はもう終わりにしよう", bestScore: 0)
-        let card41 = Card(name: "家に帰って寝なさい", bestScore: 0)
-        let card51 = Card(name: "絶対にありえない", bestScore: 0)
+        let card01 = Card(name: "ドシャ降りだ", romaji: mecab.stringJapanese(toRomaji: "ドシャ降りだ"), bestScore: 0)
+        let card11 = Card(name: "人の好みはそれぞれだ", romaji: mecab.stringJapanese(toRomaji: "人の好みはそれぞれだ"), bestScore: 0)
+        let card21 = Card(name: "聞いていますよ", romaji: mecab.stringJapanese(toRomaji: "聞いていますよ"), bestScore: 0)
+        let card31 = Card(name: "今日はもう終わりにしよう", romaji: mecab.stringJapanese(toRomaji: "今日はもう終わりにしよう"), bestScore: 0)
+        let card41 = Card(name: "家に帰って寝なさい", romaji: mecab.stringJapanese(toRomaji: "家に帰って寝なさい"), bestScore: 0)
+        let card51 = Card(name: "絶対にありえない", romaji: mecab.stringJapanese(toRomaji: "絶対にありえない"), bestScore: 0)
         
         decks1.append(Deck(name: "ドシャ降りだ", card: card01))
         decks1.append(Deck(name: "人の好みはそれぞれだ", card: card11))
@@ -73,12 +74,12 @@ class ViewController: UIViewController {
         themes.append(Theme(name: "おしゃべり", decks: decks1))
         
         var decks2 = [Deck]()
-        let card02 = Card(name: "石のように凍りついてしまった", bestScore: 0)
-        let card12 = Card(name: "まあなんてこと", bestScore: 0)
-        let card22 = Card(name: "感動して涙が出ました", bestScore: 0)
-        let card32 = Card(name: "とても楽しい時間を過ごした", bestScore: 0)
-        let card42 = Card(name: "正気を失う寸前だ", bestScore: 0)
-        let card52 = Card(name: "この感覚を振り切れないんだ", bestScore: 0)
+        let card02 = Card(name: "石のように凍りついてしまった", romaji: mecab.stringJapanese(toRomaji: "石のように凍りついてしまった"), bestScore: 0)
+        let card12 = Card(name: "まあなんてこと", romaji: mecab.stringJapanese(toRomaji: "まあなんてこと"), bestScore: 0)
+        let card22 = Card(name: "感動して涙が出ました", romaji: mecab.stringJapanese(toRomaji: "感動して涙が出ました"), bestScore: 0)
+        let card32 = Card(name: "とても楽しい時間を過ごした", romaji: mecab.stringJapanese(toRomaji: "とても楽しい時間を過ごした"), bestScore: 0)
+        let card42 = Card(name: "正気を失う寸前だ", romaji: mecab.stringJapanese(toRomaji: "正気を失う寸前だ"), bestScore: 0)
+        let card52 = Card(name: "この感覚を振り切れないんだ", romaji: mecab.stringJapanese(toRomaji: "この感覚を振り切れないんだ"), bestScore: 0)
         
         decks2.append(Deck(name: "石のように凍りついてしまった", card: card02))
         decks2.append(Deck(name: "まあなんてこと", card: card12))

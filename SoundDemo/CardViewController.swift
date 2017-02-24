@@ -13,6 +13,7 @@ class CardViewController: UIViewController, AVAudioRecorderDelegate,
 SFSpeechRecognizerDelegate  {
     var card: Card = Card()
     
+    @IBOutlet weak var lbRomaji: UILabel!
     @IBOutlet weak var lbResult: UILabel!
     @IBOutlet weak var lbTitle: UILabel!
     @IBOutlet weak var btnRecord: UIButton!
@@ -31,6 +32,7 @@ SFSpeechRecognizerDelegate  {
         
         recordingSession = AVAudioSession.sharedInstance()
         lbTitle.text = card.name
+        lbRomaji.text = card.romaji
         
         btnRecord.isEnabled = false
         
@@ -165,10 +167,7 @@ SFSpeechRecognizerDelegate  {
                         }
                     }
                 }
-                
-                
                 count = count + 1
-                
             }
             
             score = score / Float(count)

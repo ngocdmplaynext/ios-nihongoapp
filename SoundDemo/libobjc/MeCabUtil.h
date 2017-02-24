@@ -14,4 +14,6 @@
 
 - (NSArray *)parseToNodeWithString:(NSString *)string;
 
+- (NSString *)stringJapaneseToRomaji:(NSString *)string;
+
 @end

@@ -11,6 +11,7 @@
 #include <iconv.h>
 #import "MeCabUtil.h"
 #import "Node.h"
+#import "NSString+Japanese.h"
 
 
 @implementation MeCabUtil
@@ -58,6 +59,23 @@
 	}
 	
 	return [NSArray arrayWithArray:newNodes];
+}
+
+- (NSString *)stringJapaneseToRomaji:(NSString *)string {
+    NSMutableString *str = [NSMutableString new];
+    NSArray *array = [self parseToNodeWithString:string];
+    for (Node* item in array) {
+        NSString *pronoun = [item pronunciation];
+        if (pronoun) {
+            [str appendString: [pronoun stringByTransliteratingJapaneseToRomaji]];
+        } else {
+            [str appendString: [item.surface stringByTransliteratingJapaneseToRomaji]];
+        }
+        
+        [str appendString:@" "];
+    }
+    
+    return [str copy];
 }
 
 - (void)dealloc {
