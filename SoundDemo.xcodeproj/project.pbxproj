@@ -49,6 +49,7 @@
 		DC2A8E141E6004BB007DE893 /* YYTextTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = DC2A8E0A1E6004BB007DE893 /* YYTextTransaction.m */; };
 		DC2A8E151E6004BB007DE893 /* YYTextUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = DC2A8E0C1E6004BB007DE893 /* YYTextUtilities.m */; };
 		DC2A8E161E6004BB007DE893 /* YYTextWeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = DC2A8E0E1E6004BB007DE893 /* YYTextWeakProxy.m */; };
+		DC2A8E181E603347007DE893 /* MistakeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2A8E171E603347007DE893 /* MistakeViewController.swift */; };
 		DC442B071E496CA40006C4E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC442B061E496CA40006C4E4 /* AppDelegate.swift */; };
 		DC442B091E496CA40006C4E4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC442B081E496CA40006C4E4 /* ViewController.swift */; };
 		DC442B0C1E496CA40006C4E4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC442B0A1E496CA40006C4E4 /* Main.storyboard */; };
@@ -165,6 +166,7 @@
 		DC2A8E0C1E6004BB007DE893 /* YYTextUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YYTextUtilities.m; path = YYText/Utility/YYTextUtilities.m; sourceTree = "<group>"; };
 		DC2A8E0D1E6004BB007DE893 /* YYTextWeakProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YYTextWeakProxy.h; path = YYText/Utility/YYTextWeakProxy.h; sourceTree = "<group>"; };
 		DC2A8E0E1E6004BB007DE893 /* YYTextWeakProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YYTextWeakProxy.m; path = YYText/Utility/YYTextWeakProxy.m; sourceTree = "<group>"; };
+		DC2A8E171E603347007DE893 /* MistakeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MistakeViewController.swift; sourceTree = "<group>"; };
 		DC442B031E496CA40006C4E4 /* SoundDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SoundDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC442B061E496CA40006C4E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DC442B081E496CA40006C4E4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -453,6 +455,7 @@
 				DC18D9A31E519FF6002596E9 /* CardViewController.swift */,
 				DCED88761E5BEFEF00DBAD36 /* MenuViewController.swift */,
 				DCED88811E5D1CBB00DBAD36 /* DeckViewController.swift */,
+				DC2A8E171E603347007DE893 /* MistakeViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -673,6 +676,7 @@
 				DC2A8E121E6004BB007DE893 /* UIView+YYText.m in Sources */,
 				DC2A8DFB1E6004B0007DE893 /* YYTextAttribute.m in Sources */,
 				DC2A8DFA1E6004B0007DE893 /* YYTextArchiver.m in Sources */,
+				DC2A8E181E603347007DE893 /* MistakeViewController.swift in Sources */,
 				DCED888C1E5D244800DBAD36 /* DeckTableViewCell.swift in Sources */,
 				DC2529451E52E650006F2DEC /* NSString+Japanese.m in Sources */,
 				DC2A8DC11E5EE919007DE893 /* Node.m in Sources */,

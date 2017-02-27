@@ -14,7 +14,7 @@ SFSpeechRecognizerDelegate  {
     var card: Card = Card()
     
     @IBOutlet weak var lbRomaji: UILabel!
-    @IBOutlet weak var lbResult: UILabel!
+    @IBOutlet weak var lbResult: YYLabel!
     @IBOutlet weak var lbTitle: UILabel!
     @IBOutlet weak var btnRecord: UIButton!
     @IBOutlet weak var lbScore: UILabel!
@@ -29,6 +29,9 @@ SFSpeechRecognizerDelegate  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.lbResult.textAlignment = .center
+        self.lbResult.textVerticalAlignment = .center
         
         recordingSession = AVAudioSession.sharedInstance()
         lbTitle.text = card.name
@@ -177,18 +180,44 @@ SFSpeechRecognizerDelegate  {
             score = score * (Float(numberCharFinded) / Float(textStr.characters.count))
             
             self.lbScore.text = "\(score)"
-            self.lbResult.attributedText = attributedString
+            
+            let resultAttributedString = NSMutableAttributedString(string: textStr)
+            resultAttributedString.yy_font = UIFont.systemFont(ofSize: 20)
+            resultAttributedString.yy_color = UIColor.black
+            resultAttributedString.yy_lineSpacing = 5
+            resultAttributedString.yy_alignment = .center
+            
+            let border = YYTextBorder(fill: UIColor.clear, cornerRadius: 3)
+            border.strokeWidth = 1
+            border.insets = UIEdgeInsetsMake(-1, 0, -1, 0)
+            border.strokeColor = UIColor.red
+            
+            let hightlightBorder: YYTextBorder = border.copy() as! YYTextBorder
+            hightlightBorder.strokeColor = UIColor.yellow
+            
+            let hightLight = YYTextHighlight()
+            hightLight.setColor(UIColor.yellow)
+            hightLight.setBackgroundBorder(hightlightBorder)
+            hightLight.tapAction = {(_,text111,ran,_) in
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                if let controller = storyboard.instantiateViewController(withIdentifier: "kMistakeViewController") as? MistakeViewController {
+                    controller.mistakeString = text111.yy_plainText(for: ran) ?? ""
+                    self.navigationController?.pushViewController(controller, animated: true)
+                }
+            }
             
             attributedString.enumerateAttribute(NSForegroundColorAttributeName, in: NSRange(location: 0, length: textStr.characters.count), options: [], using: { (object, ran, _) in
                 if let deviceColor = object as? UIColor, deviceColor == UIColor.red {
-                    
+                    resultAttributedString.yy_setColor(UIColor.red, range: ran)
+                    resultAttributedString.yy_setTextBorder(border, range: ran)
+                    resultAttributedString.yy_setTextHighlight(hightLight, range: ran)
                 }
             })
             
+            self.lbResult.attributedText = resultAttributedString
         }
     
     }
-
     
     func loadRecordingUI() {
         btnRecord.isHidden = false
