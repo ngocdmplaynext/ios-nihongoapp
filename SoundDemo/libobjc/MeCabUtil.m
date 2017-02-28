@@ -16,6 +16,15 @@
 
 @implementation MeCabUtil
 
++ (MeCabUtil *)sharedMeCabUtil {
+    static MeCabUtil *sharedMeCabUtil = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedMeCabUtil = [[self alloc] init];
+    });
+    return sharedMeCabUtil;
+}
+
 - (NSArray *)parseToNodeWithString:(NSString *)string {
 
 	if (mecab == NULL) {
@@ -61,21 +70,28 @@
 	return [NSArray arrayWithArray:newNodes];
 }
 
-- (NSString *)stringJapaneseToRomaji:(NSString *)string {
-    NSMutableString *str = [NSMutableString new];
+- (NSArray *)stringJapaneseToArrayRomaji:(NSString *)string {
+    NSMutableArray *strArray = [NSMutableArray new];
     NSArray *array = [self parseToNodeWithString:string];
     for (Node* item in array) {
         NSString *pronoun = [item pronunciation];
         if (pronoun) {
-            [str appendString: [pronoun stringByTransliteratingJapaneseToRomaji]];
+            [strArray addObject: [pronoun stringByTransliteratingJapaneseToRomaji]];
         } else {
-            [str appendString: [item.surface stringByTransliteratingJapaneseToRomaji]];
+            [strArray addObject: [item.surface stringByTransliteratingJapaneseToRomaji]];
         }
-        
-        [str appendString:@" "];
     }
     
-    return [str copy];
+    return [strArray copy];
+}
+
+- (NSString *)stringJapaneseToRomaji:(NSString *)string withWordSeperator:(NSString *)seperator {
+    
+    return [[[self stringJapaneseToArrayRomaji:string] componentsJoinedByString:seperator] copy];
+}
+
+- (NSString *)stringJapaneseToRomaji:(NSString *)string {
+    return [self stringJapaneseToRomaji:string withWordSeperator:@" "];
 }
 
 - (void)dealloc {

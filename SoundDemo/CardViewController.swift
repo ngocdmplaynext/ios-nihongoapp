@@ -110,12 +110,10 @@ SFSpeechRecognizerDelegate  {
             var numberCharFinded: Int = 0
             
             let symbols = ["！","、","。","？"]
-//            var wrongRanges: [NSRange] = [NSRange]()
-//            var correctRanges: [NSRange] = [NSRange]()
             let textStr = self.card.name
+            
             let attributedString = NSMutableAttributedString(string:textStr)
             attributedString.addAttribute(NSForegroundColorAttributeName, value: UIColor.red , range: NSRange(location: 0, length: textStr.characters.count))
-            //find all symbol string
             for symbol in symbols {
                 let ranges = textStr.ranges(of: symbol)
                 for range in ranges {
@@ -123,20 +121,9 @@ SFSpeechRecognizerDelegate  {
                 }
             }
             
-//            var i = 0
-//            for transcription in result.transcriptions {
-//                transcription.segments.forEach {
-//                    print("--- SEGMENT\(i) ---")
-//                    print("substring            : \($0.substring)")
-//                    print("timestamp            : \($0.timestamp)")
-//                    print("duration             : \($0.duration)")
-//                    print("confidence           : \($0.confidence)")
-//                    print("alternativeSubstrings: \($0.alternativeSubstrings)")
-//                    print("")
-//                }
-//                i = i + 1
-//            }
+            let stringRomaji = MeCabUtil.shared().stringJapanese(toRomaji: textStr, withWordSeperator: "")
             
+            var arrStrRomaji = [[String]]()
             result.bestTranscription.segments.forEach {
                 print("--- SEGMENT ---")
                 print("substring            : \($0.substring)")
@@ -145,39 +132,91 @@ SFSpeechRecognizerDelegate  {
                 print("confidence           : \($0.confidence)")
                 print("alternativeSubstrings: \($0.alternativeSubstrings)")
                 print("")
+                score = score + ($0.confidence / 0.93) * 100
+                let arrItem = [$0.substring] + $0.alternativeSubstrings
+                var arrItemRomajiNoGrammer = arrItem.map({
+                    return ($0 as NSString).transliteratingJapaneseToRomaji() ?? ""
+                })
                 
+                let arrItemRomajiUseGrammer = arrItem.map({
+                    return MeCabUtil.shared().stringJapanese(toRomaji: $0, withWordSeperator: "") ?? ""
+                })
                 
-                let str = textStr.subStr(from: currentIndex)
+                let filter = arrItemRomajiUseGrammer.filter({ (str) -> Bool in
+                    return !arrItemRomajiNoGrammer.contains(str)
+                })
                 
-                if str != "" {
-                    let subStr = $0.substring
-                    if let index = str.index(of: subStr) {
-                        numberCharFinded = numberCharFinded + subStr.characters.count
-                        score = score + ($0.confidence / 0.93) * 100
-                        attributedString.addAttribute(NSForegroundColorAttributeName, value: UIColor.black , range: NSRange(location: currentIndex + index, length: subStr.characters.count))
-                        
-                        currentIndex = currentIndex + index + subStr.characters.count
-                    } else {
-                        for alternativeSubStr in $0.alternativeSubstrings {
-                            if let index = str.index(of: alternativeSubStr) {
-                                numberCharFinded = numberCharFinded + alternativeSubStr.characters.count
-                                score = score + ($0.confidence / 0.93) * 100
-                                attributedString.addAttribute(NSForegroundColorAttributeName, value: UIColor.black , range: NSRange(location: currentIndex + index, length: alternativeSubStr.characters.count))
-                                
-                                currentIndex = currentIndex + index + alternativeSubStr.characters.count
-                                break
-                            }
-                        }
-                    }
-                }
+                arrItemRomajiNoGrammer.append(contentsOf: filter)
+                
+                arrStrRomaji.append(arrItemRomajiNoGrammer)
+                
                 count = count + 1
             }
             
-            score = score / Float(count)
-            if score > 100 {
-                score = 100
+            var arrStrRomajiResult: [String] = [""]
+            for arrStrItem in arrStrRomaji {
+                arrStrRomajiResult = arrayCrossJoin(aArray: arrStrRomajiResult, bArray: arrStrItem, joiner: {
+                    return "\($0)\($1)"
+                })
             }
-            score = score * (Float(numberCharFinded) / Float(textStr.characters.count))
+            
+            if let stringRomaji = stringRomaji, arrStrRomajiResult.contains(stringRomaji) {
+                score = score / Float(count)
+                if score > 100 {
+                    score = 100
+                }
+                
+                attributedString.addAttribute(NSForegroundColorAttributeName, value: UIColor.black , range: NSRange(location: 0, length: textStr.characters.count))
+                
+            } else {
+                //reset score and count for other calculate
+                score = 0
+                count = 0
+                
+                result.bestTranscription.segments.forEach {
+                    print("--- SEGMENT ---")
+                    print("substring            : \($0.substring)")
+                    print("timestamp            : \($0.timestamp)")
+                    print("duration             : \($0.duration)")
+                    print("confidence           : \($0.confidence)")
+                    print("alternativeSubstrings: \($0.alternativeSubstrings)")
+                    print("")
+                    
+                    let str = textStr.subStr(from: currentIndex)
+                    
+                    if str != "" {
+                        let subStr = $0.substring
+                        if let index = str.index(of: subStr) {
+                            numberCharFinded = numberCharFinded + subStr.characters.count
+                            score = score + ($0.confidence / 0.93) * 100
+                            attributedString.addAttribute(NSForegroundColorAttributeName, value: UIColor.black , range: NSRange(location: currentIndex + index, length: subStr.characters.count))
+                            
+                            currentIndex = currentIndex + index + subStr.characters.count
+                        } else {
+                            for alternativeSubStr in $0.alternativeSubstrings {
+                                
+                                if let index = str.index(of: alternativeSubStr) {
+                                    numberCharFinded = numberCharFinded + alternativeSubStr.characters.count
+                                    score = score + ($0.confidence / 0.93) * 100
+                                    attributedString.addAttribute(NSForegroundColorAttributeName, value: UIColor.black , range: NSRange(location: currentIndex + index, length: alternativeSubStr.characters.count))
+                                    
+                                    currentIndex = currentIndex + index + alternativeSubStr.characters.count
+                                    break
+                                }
+                            }
+                        }
+                    }
+                    count = count + 1
+                }
+                
+                score = score / Float(count)
+                if score > 100 {
+                    score = 100
+                }
+                score = score * (Float(numberCharFinded) / Float(textStr.characters.count))
+            }
+
+            
             
             self.lbScore.text = "\(score)"
             
@@ -198,10 +237,10 @@ SFSpeechRecognizerDelegate  {
             let hightLight = YYTextHighlight()
             hightLight.setColor(UIColor.yellow)
             hightLight.setBackgroundBorder(hightlightBorder)
-            hightLight.tapAction = {(_,text111,ran,_) in
+            hightLight.tapAction = {(_,text,ran,_) in
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 if let controller = storyboard.instantiateViewController(withIdentifier: "kMistakeViewController") as? MistakeViewController {
-                    controller.mistakeString = text111.yy_plainText(for: ran) ?? ""
+                    controller.mistakeString = text.yy_plainText(for: ran) ?? ""
                     self.navigationController?.pushViewController(controller, animated: true)
                 }
             }
@@ -278,17 +317,6 @@ SFSpeechRecognizerDelegate  {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 

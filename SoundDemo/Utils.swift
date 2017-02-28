@@ -16,3 +16,23 @@ public func heightForView(text:String, font:UIFont, width:CGFloat) -> CGFloat{
     label.sizeToFit()
     return label.frame.height
 }
+
+func arrayCrossJoin<A, B, R>(
+    aArray: [A],
+    bArray: [B],
+    joiner: (_ a: A, _ b: B) -> R?)
+    -> [R]
+{
+    var results = [R]()
+    for a in aArray
+    {
+        for b in bArray
+        {
+            if let result = joiner(a, b)
+            {
+                results.append(result)
+            }
+        }
+    }
+    return results
+}

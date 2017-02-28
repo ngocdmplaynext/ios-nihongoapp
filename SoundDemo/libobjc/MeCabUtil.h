@@ -12,8 +12,14 @@
 	mecab_t *mecab;
 }
 
++ (MeCabUtil *)sharedMeCabUtil;
+
 - (NSArray *)parseToNodeWithString:(NSString *)string;
 
+- (NSString *)stringJapaneseToRomaji:(NSString *)string withWordSeperator:(NSString *)seperator;
+
 - (NSString *)stringJapaneseToRomaji:(NSString *)string;
+
+- (NSArray *)stringJapaneseToArrayRomaji:(NSString *)string;
 
 @end
