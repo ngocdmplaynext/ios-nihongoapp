@@ -85,13 +85,17 @@
     return [strArray copy];
 }
 
-- (NSString *)stringJapaneseToRomaji:(NSString *)string withWordSeperator:(NSString *)seperator {
+- (NSString *)stringJapaneseToRomaji:(NSString *)string withWordSeperator:(NSString *)seperator unuseChar: (NSArray *) unuseChars {
+     NSArray *arrRomaji = [self stringJapaneseToArrayRomaji:string];
+     arrRomaji = [arrRomaji filteredArrayUsingPredicate: [NSPredicate predicateWithBlock:^BOOL(NSString* str, NSDictionary *bindings) {
+        return ![unuseChars containsObject:str];
+    }]];
     
-    return [[[self stringJapaneseToArrayRomaji:string] componentsJoinedByString:seperator] copy];
+    return [[arrRomaji componentsJoinedByString:seperator] copy];
 }
 
 - (NSString *)stringJapaneseToRomaji:(NSString *)string {
-    return [self stringJapaneseToRomaji:string withWordSeperator:@" "];
+    return [self stringJapaneseToRomaji:string withWordSeperator:@" " unuseChar:[NSArray new]];
 }
 
 - (void)dealloc {

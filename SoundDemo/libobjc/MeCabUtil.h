@@ -16,7 +16,7 @@
 
 - (NSArray *)parseToNodeWithString:(NSString *)string;
 
-- (NSString *)stringJapaneseToRomaji:(NSString *)string withWordSeperator:(NSString *)seperator;
+- (NSString *)stringJapaneseToRomaji:(NSString *)string withWordSeperator:(NSString *)seperator unuseChar: (NSArray *) unuseChars;
 
 - (NSString *)stringJapaneseToRomaji:(NSString *)string;
 

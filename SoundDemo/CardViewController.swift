@@ -9,10 +9,11 @@ import AVFoundation
 import UIKit
 import Speech
 
-class CardViewController: UIViewController, AVAudioRecorderDelegate,
+class CardViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPlayerDelegate, 
 SFSpeechRecognizerDelegate  {
     var card: Card = Card()
     
+    @IBOutlet weak var btnPlay: UIButton!
     @IBOutlet weak var lbRomaji: UILabel!
     @IBOutlet weak var lbResult: YYLabel!
     @IBOutlet weak var lbTitle: UILabel!
@@ -20,6 +21,7 @@ SFSpeechRecognizerDelegate  {
     @IBOutlet weak var lbScore: UILabel!
     var recordingSession: AVAudioSession!
     var audioRecorder: AVAudioRecorder!
+    var sampleSound: AVAudioPlayer?
     
     @IBOutlet weak var ytextView: UITextView!
     private var speechRecognizer: SFSpeechRecognizer!
@@ -39,21 +41,40 @@ SFSpeechRecognizerDelegate  {
         
         btnRecord.isEnabled = false
         
-        do {
-            try recordingSession.setCategory(AVAudioSessionCategoryPlayAndRecord)
-            try recordingSession.setActive(true)
-            recordingSession.requestRecordPermission() { [unowned self] allowed in
-                DispatchQueue.main.async {
-                    if allowed {
-                        self.loadRecordingUI()
-                    } else {
-                        // failed to record!
-                    }
+        recordingSession.requestRecordPermission() { [unowned self] allowed in
+            DispatchQueue.main.async {
+                if allowed {
+                    self.loadRecordingUI()
+                } else {
+                    // failed to record!
+                    print("failed to record! 1")
                 }
             }
-        } catch {
-            // failed to record!
         }
+        
+//        do {
+//            try recordingSession.setCategory(AVAudioSessionCategoryPlayAndRecord)
+//            try recordingSession.setActive(true)
+//            try recordingSession.setMode(AVAudioSessionModeSpokenAudio)
+//            try recordingSession.setActive(true, with: .notifyOthersOnDeactivation)
+//            
+//            let currentRoute = AVAudioSession.sharedInstance().currentRoute
+//            for description in currentRoute.outputs {
+//                if description.portType == AVAudioSessionPortHeadphones {
+//                    try recordingSession.overrideOutputAudioPort(AVAudioSessionPortOverride.none)
+//                    print("headphone plugged in")
+//                } else {
+//                    print("headphone pulled out")
+//                    try recordingSession.overrideOutputAudioPort(AVAudioSessionPortOverride.speaker)
+//                }
+//            }
+//
+//            
+//        } catch {
+//            // failed to record!
+//            print("failed to record!")
+//        }
+        
         // Do any additional setup after loading the view.
         prepareRecognizer(locale: defaultLocale)
     }
@@ -121,7 +142,7 @@ SFSpeechRecognizerDelegate  {
                 }
             }
             
-            let stringRomaji = MeCabUtil.shared().stringJapanese(toRomaji: textStr, withWordSeperator: "")
+            let stringRomaji = MeCabUtil.shared().stringJapanese(toRomaji: textStr, withWordSeperator: "", unuseChar: symbols)
             
             var arrStrRomaji = [[String]]()
             result.bestTranscription.segments.forEach {
@@ -139,7 +160,7 @@ SFSpeechRecognizerDelegate  {
                 })
                 
                 let arrItemRomajiUseGrammer = arrItem.map({
-                    return MeCabUtil.shared().stringJapanese(toRomaji: $0, withWordSeperator: "") ?? ""
+                    return MeCabUtil.shared().stringJapanese(toRomaji: $0, withWordSeperator: "" , unuseChar: symbols) ?? ""
                 })
                 
                 let filter = arrItemRomajiUseGrammer.filter({ (str) -> Bool in
@@ -221,10 +242,11 @@ SFSpeechRecognizerDelegate  {
             self.lbScore.text = "\(score)"
             
             let resultAttributedString = NSMutableAttributedString(string: textStr)
-            resultAttributedString.yy_font = UIFont.systemFont(ofSize: 20)
+            resultAttributedString.yy_font = UIFont.systemFont(ofSize: 17)
             resultAttributedString.yy_color = UIColor.black
             resultAttributedString.yy_lineSpacing = 5
             resultAttributedString.yy_alignment = .center
+            resultAttributedString.yy_lineBreakMode = .byCharWrapping
             
             let border = YYTextBorder(fill: UIColor.clear, cornerRadius: 3)
             border.strokeWidth = 1
@@ -275,12 +297,22 @@ SFSpeechRecognizerDelegate  {
         do {
             audioRecorder = try AVAudioRecorder(url: audioFilename, settings: settings)
             audioRecorder.delegate = self
-            audioRecorder.record()
+            audioRecorder.prepareToRecord()
             
             btnRecord.setTitle("Tap To Stop", for: .normal)
         } catch {
             finishRecording(success: false)
         }
+        
+        do {
+            try recordingSession.setCategory(AVAudioSessionCategoryPlayAndRecord)
+            try recordingSession.setActive(true)
+            audioRecorder.record()
+        } catch let error as NSError {
+            print ("\(error.localizedDescription)")
+        }
+        
+        
     }
     
     func getDocumentsDirectory() -> URL {
@@ -288,7 +320,66 @@ SFSpeechRecognizerDelegate  {
         let documentsDirectory = paths[0]
         return documentsDirectory
     }
+    
+    @IBAction func play(_ sender: UIButton) {
+        
+        let isPlaying = sampleSound?.isPlaying ?? false
+        if isPlaying {
+            sampleSound?.stop()
+            sender.setTitle("Play", for: .normal)
+        } else {
+            sender.setTitle("Stop", for: .normal)
+            let path = Bundle.main.path(forResource: card.name, ofType:"m4a")
+            if let path = path {
+                do {
+                    let currentRoute = AVAudioSession.sharedInstance().currentRoute
+                    for description in currentRoute.outputs {
+                        if description.portType == AVAudioSessionPortHeadphones {
+                            try recordingSession.overrideOutputAudioPort(AVAudioSessionPortOverride.none)
+                            print("headphone plugged in")
+                        } else {
+                            print("headphone pulled out")
+                            try recordingSession.overrideOutputAudioPort(AVAudioSessionPortOverride.speaker)
+                        }
+                    }
+                    
+                    let url = URL(fileURLWithPath: path)
+                    let sound = try AVAudioPlayer(contentsOf: url)
+                    sampleSound = sound
+                    sampleSound?.delegate = self
+                    sound.prepareToPlay()
+                } catch {
+                    print("get an error:\(error.localizedDescription)")
+                }
+                
+                do {
+                    try recordingSession.setCategory(AVAudioSessionCategoryPlayAndRecord)
+                    try recordingSession.setActive(true)
+                    sampleSound?.play()
+                } catch {
+                    print("get an error 2:\(error.localizedDescription)")
+                }
+            } else {
+                let alert = UIAlertController(title: "Alert", message: "File not found", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+        }
+    }
 
+    @IBAction func testSampleSound(_ sender: UIButton) {
+        let path = Bundle.main.path(forResource: card.name, ofType:"m4a")
+        if let path = path {
+            let url = URL(fileURLWithPath: path)
+            
+            recognizeFile(url: url)
+        } else {
+            let alert = UIAlertController(title: "Alert", message: "File not found", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
     @IBAction func btnClicked(_ sender: UIButton) {
         if audioRecorder == nil {
             startRecording()
@@ -300,9 +391,14 @@ SFSpeechRecognizerDelegate  {
     func finishRecording(success: Bool) {
         audioRecorder.stop()
         audioRecorder = nil
-        
-        let audioFilename = getDocumentsDirectory().appendingPathComponent("recording.m4a")
-        recognizeFile(url: audioFilename)
+        if success {
+            let audioFilename = getDocumentsDirectory().appendingPathComponent("recording.m4a")
+            recognizeFile(url: audioFilename)
+        } else {
+            let alert = UIAlertController(title: "Alert", message: "Fail to record", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
         
         btnRecord.setTitle("Tap to Record", for: .normal)
     }
@@ -310,6 +406,14 @@ SFSpeechRecognizerDelegate  {
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
         if !flag {
             finishRecording(success: false)
+        }
+    }
+    
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        if  sampleSound != nil {
+            sampleSound?.stop()
+            sampleSound = nil
+            btnPlay.setTitle("Play", for: .normal)
         }
     }
     

@@ -284,7 +284,7 @@
                                 <rect key="frame" x="16" y="287" width="343" height="40"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="F75-qb-2hi"/>
+                                    <constraint firstAttribute="height" priority="249" constant="40" id="F75-qb-2hi"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="numberOfLines">
@@ -298,6 +298,27 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p46-4H-uiv">
+                                <rect key="frame" x="132" y="28" width="110" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="110" id="BTb-A5-Rfs"/>
+                                    <constraint firstAttribute="height" constant="30" id="COI-wY-TNB"/>
+                                </constraints>
+                                <state key="normal" title="Play"/>
+                                <connections>
+                                    <action selector="play:" destination="UXl-CQ-W3E" eventType="touchUpInside" id="64n-gz-7WI"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DSn-oc-7zX">
+                                <rect key="frame" x="274" y="28" width="85" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="zAw-0P-8TS"/>
+                                </constraints>
+                                <state key="normal" title="Test This"/>
+                                <connections>
+                                    <action selector="testSampleSound:" destination="UXl-CQ-W3E" eventType="touchUpInside" id="QvV-u0-k0y"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -308,18 +329,24 @@
                             <constraint firstItem="wHW-ZW-SkN" firstAttribute="leading" secondItem="93X-9F-cly" secondAttribute="leading" constant="16" id="BJm-la-Hnw"/>
                             <constraint firstItem="vVF-uQ-axV" firstAttribute="top" secondItem="GQz-ra-h1Y" secondAttribute="bottom" constant="18.5" id="Cbw-qR-zSp"/>
                             <constraint firstItem="6oy-Or-ZhR" firstAttribute="top" secondItem="w2J-3p-9tU" secondAttribute="bottom" constant="64" id="Crl-yV-nHC"/>
+                            <constraint firstItem="DSn-oc-7zX" firstAttribute="leading" secondItem="p46-4H-uiv" secondAttribute="trailing" constant="32" id="DDd-eg-Vdx"/>
+                            <constraint firstItem="p46-4H-uiv" firstAttribute="top" secondItem="w2J-3p-9tU" secondAttribute="bottom" constant="8" id="GD1-FE-Y1R"/>
                             <constraint firstItem="6oy-Or-ZhR" firstAttribute="trailing" secondItem="93X-9F-cly" secondAttribute="trailingMargin" id="GK7-Ms-dSy"/>
                             <constraint firstItem="vVF-uQ-axV" firstAttribute="leading" secondItem="93X-9F-cly" secondAttribute="leadingMargin" id="Iw0-47-HjM"/>
                             <constraint firstItem="vVF-uQ-axV" firstAttribute="centerX" secondItem="GQz-ra-h1Y" secondAttribute="centerX" id="Kih-Jw-Qtn"/>
+                            <constraint firstItem="p46-4H-uiv" firstAttribute="centerX" secondItem="93X-9F-cly" secondAttribute="centerX" id="TKw-AK-Ys4"/>
                             <constraint firstItem="GQz-ra-h1Y" firstAttribute="top" secondItem="jx6-Z9-A6f" secondAttribute="bottom" constant="51" id="VeU-jU-6Ro"/>
+                            <constraint firstAttribute="trailing" secondItem="DSn-oc-7zX" secondAttribute="trailing" constant="16" id="aRw-md-4iR"/>
                             <constraint firstAttribute="trailing" secondItem="PdZ-Py-eWa" secondAttribute="trailing" constant="16" id="ba0-wH-Smv"/>
                             <constraint firstItem="jx6-Z9-A6f" firstAttribute="top" secondItem="PdZ-Py-eWa" secondAttribute="bottom" constant="8" id="c4D-tn-U9q"/>
                             <constraint firstItem="6oy-Or-ZhR" firstAttribute="leading" secondItem="93X-9F-cly" secondAttribute="leadingMargin" id="mp7-xW-76v"/>
+                            <constraint firstItem="DSn-oc-7zX" firstAttribute="centerY" secondItem="p46-4H-uiv" secondAttribute="centerY" id="rZd-bq-sRO"/>
                             <constraint firstItem="PdZ-Py-eWa" firstAttribute="top" secondItem="6oy-Or-ZhR" secondAttribute="bottom" constant="16" id="s1p-Nx-kRu"/>
                             <constraint firstItem="jx6-Z9-A6f" firstAttribute="centerX" secondItem="6oy-Or-ZhR" secondAttribute="centerX" id="zGF-e9-WBd"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="btnPlay" destination="p46-4H-uiv" id="CXx-Cl-YDP"/>
                         <outlet property="btnRecord" destination="jx6-Z9-A6f" id="Jl7-er-Tuz"/>
                         <outlet property="lbResult" destination="wHW-ZW-SkN" id="7VX-5b-Evb"/>
                         <outlet property="lbRomaji" destination="PdZ-Py-eWa" id="8mA-Lb-Fht"/>
