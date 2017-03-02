@@ -51,30 +51,6 @@ SFSpeechRecognizerDelegate  {
                 }
             }
         }
-        
-//        do {
-//            try recordingSession.setCategory(AVAudioSessionCategoryPlayAndRecord)
-//            try recordingSession.setActive(true)
-//            try recordingSession.setMode(AVAudioSessionModeSpokenAudio)
-//            try recordingSession.setActive(true, with: .notifyOthersOnDeactivation)
-//            
-//            let currentRoute = AVAudioSession.sharedInstance().currentRoute
-//            for description in currentRoute.outputs {
-//                if description.portType == AVAudioSessionPortHeadphones {
-//                    try recordingSession.overrideOutputAudioPort(AVAudioSessionPortOverride.none)
-//                    print("headphone plugged in")
-//                } else {
-//                    print("headphone pulled out")
-//                    try recordingSession.overrideOutputAudioPort(AVAudioSessionPortOverride.speaker)
-//                }
-//            }
-//
-//            
-//        } catch {
-//            // failed to record!
-//            print("failed to record!")
-//        }
-        
         // Do any additional setup after loading the view.
         prepareRecognizer(locale: defaultLocale)
     }
@@ -415,11 +391,6 @@ SFSpeechRecognizerDelegate  {
             sampleSound = nil
             btnPlay.setTitle("Play", for: .normal)
         }
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
 }
