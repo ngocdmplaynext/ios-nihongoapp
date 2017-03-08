@@ -34,6 +34,8 @@ class ViewController: UIViewController {
             view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
         }
         
+        DBManager.shared.createTable()
+        
         initData()
     }
 

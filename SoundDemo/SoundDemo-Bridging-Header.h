@@ -7,3 +7,4 @@
 #import "MeCabUtil.h"
 #import "Node.h"
 #import "YYText.h"
+#import "FMDB.h"

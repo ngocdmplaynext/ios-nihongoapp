@@ -79,6 +79,16 @@
 		DC7F7C361E6569EB006DAAA8 /* 運動はお好きですか.m4a in Resources */ = {isa = PBXBuildFile; fileRef = DC7F7C221E6569EA006DAAA8 /* 運動はお好きですか.m4a */; };
 		DC7F7C371E6569EB006DAAA8 /* 道が混んでいますね.m4a in Resources */ = {isa = PBXBuildFile; fileRef = DC7F7C231E6569EA006DAAA8 /* 道が混んでいますね.m4a */; };
 		DC7F7C381E6569EB006DAAA8 /* 風が強いですね.m4a in Resources */ = {isa = PBXBuildFile; fileRef = DC7F7C241E6569EA006DAAA8 /* 風が強いですね.m4a */; };
+		DC7F7C521E67EBC1006DAAA8 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = DC7F7C481E67EBC1006DAAA8 /* FMDatabase.m */; };
+		DC7F7C531E67EBC1006DAAA8 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = DC7F7C4A1E67EBC1006DAAA8 /* FMDatabaseAdditions.m */; };
+		DC7F7C541E67EBC1006DAAA8 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = DC7F7C4C1E67EBC1006DAAA8 /* FMDatabasePool.m */; };
+		DC7F7C551E67EBC1006DAAA8 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = DC7F7C4E1E67EBC1006DAAA8 /* FMDatabaseQueue.m */; };
+		DC7F7C561E67EBC1006DAAA8 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = DC7F7C511E67EBC1006DAAA8 /* FMResultSet.m */; };
+		DC7F7C591E67EC14006DAAA8 /* FMDatabaseAdditionsVariadic.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7F7C571E67EC14006DAAA8 /* FMDatabaseAdditionsVariadic.swift */; };
+		DC7F7C5A1E67EC14006DAAA8 /* FMDatabaseVariadic.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7F7C581E67EC14006DAAA8 /* FMDatabaseVariadic.swift */; };
+		DC7F7C5D1E67EFEA006DAAA8 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7F7C5C1E67EFEA006DAAA8 /* DBManager.swift */; };
+		DC7F7C5F1E67F02C006DAAA8 /* database.db in Resources */ = {isa = PBXBuildFile; fileRef = DC7F7C5E1E67F02C006DAAA8 /* database.db */; };
+		DC7F7C611E67FA69006DAAA8 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = DC7F7C601E67FA69006DAAA8 /* libsqlite3.0.tbd */; };
 		DCED88751E5BEDC200DBAD36 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCED88741E5BEDC200DBAD36 /* SWRevealViewController.m */; };
 		DCED88771E5BEFEF00DBAD36 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCED88761E5BEFEF00DBAD36 /* MenuViewController.swift */; };
 		DCED88791E5C122500DBAD36 /* reveal-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCED88781E5C122500DBAD36 /* reveal-icon@2x.png */; };
@@ -222,6 +232,22 @@
 		DC7F7C221E6569EA006DAAA8 /* 運動はお好きですか.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "運動はお好きですか.m4a"; sourceTree = "<group>"; };
 		DC7F7C231E6569EA006DAAA8 /* 道が混んでいますね.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "道が混んでいますね.m4a"; sourceTree = "<group>"; };
 		DC7F7C241E6569EA006DAAA8 /* 風が強いですね.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "風が強いですね.m4a"; sourceTree = "<group>"; };
+		DC7F7C471E67EBC1006DAAA8 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabase.h; path = fmdb/FMDatabase.h; sourceTree = SOURCE_ROOT; };
+		DC7F7C481E67EBC1006DAAA8 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMDatabase.m; path = fmdb/FMDatabase.m; sourceTree = SOURCE_ROOT; };
+		DC7F7C491E67EBC1006DAAA8 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabaseAdditions.h; path = fmdb/FMDatabaseAdditions.h; sourceTree = SOURCE_ROOT; };
+		DC7F7C4A1E67EBC1006DAAA8 /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMDatabaseAdditions.m; path = fmdb/FMDatabaseAdditions.m; sourceTree = SOURCE_ROOT; };
+		DC7F7C4B1E67EBC1006DAAA8 /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabasePool.h; path = fmdb/FMDatabasePool.h; sourceTree = SOURCE_ROOT; };
+		DC7F7C4C1E67EBC1006DAAA8 /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMDatabasePool.m; path = fmdb/FMDatabasePool.m; sourceTree = SOURCE_ROOT; };
+		DC7F7C4D1E67EBC1006DAAA8 /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabaseQueue.h; path = fmdb/FMDatabaseQueue.h; sourceTree = SOURCE_ROOT; };
+		DC7F7C4E1E67EBC1006DAAA8 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMDatabaseQueue.m; path = fmdb/FMDatabaseQueue.m; sourceTree = SOURCE_ROOT; };
+		DC7F7C4F1E67EBC1006DAAA8 /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDB.h; path = fmdb/FMDB.h; sourceTree = SOURCE_ROOT; };
+		DC7F7C501E67EBC1006DAAA8 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMResultSet.h; path = fmdb/FMResultSet.h; sourceTree = SOURCE_ROOT; };
+		DC7F7C511E67EBC1006DAAA8 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMResultSet.m; path = fmdb/FMResultSet.m; sourceTree = SOURCE_ROOT; };
+		DC7F7C571E67EC14006DAAA8 /* FMDatabaseAdditionsVariadic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FMDatabaseAdditionsVariadic.swift; sourceTree = "<group>"; };
+		DC7F7C581E67EC14006DAAA8 /* FMDatabaseVariadic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FMDatabaseVariadic.swift; sourceTree = "<group>"; };
+		DC7F7C5C1E67EFEA006DAAA8 /* DBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
+		DC7F7C5E1E67F02C006DAAA8 /* database.db */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = database.db; sourceTree = "<group>"; };
+		DC7F7C601E67FA69006DAAA8 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		DCED88731E5BEDC200DBAD36 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		DCED88741E5BEDC200DBAD36 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		DCED88761E5BEFEF00DBAD36 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
@@ -239,6 +265,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC7F7C611E67FA69006DAAA8 /* libsqlite3.0.tbd in Frameworks */,
 				DC2A8DC81E5EE99C007DE893 /* libstdc++.tbd in Frameworks */,
 				DC2A8DC61E5EE983007DE893 /* libiconv.tbd in Frameworks */,
 				DC2A8DC31E5EE970007DE893 /* libmecab.a in Frameworks */,
@@ -301,6 +328,7 @@
 		DC2A8DC41E5EE982007DE893 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DC7F7C601E67FA69006DAAA8 /* libsqlite3.0.tbd */,
 				DC2A8DC71E5EE99C007DE893 /* libstdc++.tbd */,
 				DC2A8DC51E5EE983007DE893 /* libiconv.tbd */,
 			);
@@ -412,6 +440,8 @@
 		DC442B051E496CA40006C4E4 /* SoundDemo */ = {
 			isa = PBXGroup;
 			children = (
+				DC7F7C5B1E67EFC8006DAAA8 /* db */,
+				DC7F7C461E67EB81006DAAA8 /* fmdb */,
 				DC7F7C0F1E6569DF006DAAA8 /* Sound */,
 				DC2A8DCA1E60045A007DE893 /* YYText */,
 				DC2A8DB91E5EE90E007DE893 /* libobjc */,
@@ -477,6 +507,33 @@
 			name = Sound;
 			sourceTree = "<group>";
 		};
+		DC7F7C461E67EB81006DAAA8 /* fmdb */ = {
+			isa = PBXGroup;
+			children = (
+				DC7F7C471E67EBC1006DAAA8 /* FMDatabase.h */,
+				DC7F7C481E67EBC1006DAAA8 /* FMDatabase.m */,
+				DC7F7C491E67EBC1006DAAA8 /* FMDatabaseAdditions.h */,
+				DC7F7C4A1E67EBC1006DAAA8 /* FMDatabaseAdditions.m */,
+				DC7F7C4B1E67EBC1006DAAA8 /* FMDatabasePool.h */,
+				DC7F7C4C1E67EBC1006DAAA8 /* FMDatabasePool.m */,
+				DC7F7C4D1E67EBC1006DAAA8 /* FMDatabaseQueue.h */,
+				DC7F7C4E1E67EBC1006DAAA8 /* FMDatabaseQueue.m */,
+				DC7F7C4F1E67EBC1006DAAA8 /* FMDB.h */,
+				DC7F7C501E67EBC1006DAAA8 /* FMResultSet.h */,
+				DC7F7C511E67EBC1006DAAA8 /* FMResultSet.m */,
+			);
+			name = fmdb;
+			sourceTree = "<group>";
+		};
+		DC7F7C5B1E67EFC8006DAAA8 /* db */ = {
+			isa = PBXGroup;
+			children = (
+				DC7F7C5C1E67EFEA006DAAA8 /* DBManager.swift */,
+				DC7F7C5E1E67F02C006DAAA8 /* database.db */,
+			);
+			name = db;
+			sourceTree = "<group>";
+		};
 		DCED88721E5BEDB100DBAD36 /* SWRevealViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -500,6 +557,8 @@
 		DCED88831E5D222F00DBAD36 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				DC7F7C571E67EC14006DAAA8 /* FMDatabaseAdditionsVariadic.swift */,
+				DC7F7C581E67EC14006DAAA8 /* FMDatabaseVariadic.swift */,
 				DCED88841E5D224900DBAD36 /* Utils.swift */,
 				DC065DF51E5D2ACE00C96661 /* StringExtension.swift */,
 			);
@@ -709,6 +768,7 @@
 				DC2A8DB21E5EE901007DE893 /* left-id.def in Resources */,
 				DC2A8DB31E5EE901007DE893 /* matrix.bin in Resources */,
 				DC7F7C2E1E6569EA006DAAA8 /* 2丁目までお願いします.m4a in Resources */,
+				DC7F7C5F1E67F02C006DAAA8 /* database.db in Resources */,
 				DC7F7C2A1E6569EA006DAAA8 /* こんにちは.m4a in Resources */,
 				DC442B0C1E496CA40006C4E4 /* Main.storyboard in Resources */,
 				DC7F7C2B1E6569EA006DAAA8 /* こんばんは.m4a in Resources */,
@@ -739,12 +799,17 @@
 			files = (
 				DCED88751E5BEDC200DBAD36 /* SWRevealViewController.m in Sources */,
 				DC2A8DFE1E6004B0007DE893 /* YYTextRunDelegate.m in Sources */,
+				DC7F7C591E67EC14006DAAA8 /* FMDatabaseAdditionsVariadic.swift in Sources */,
 				DC2A8E101E6004BB007DE893 /* NSParagraphStyle+YYText.m in Sources */,
 				DC2A8DEA1E6004A7007DE893 /* YYTextInput.m in Sources */,
+				DC7F7C5D1E67EFEA006DAAA8 /* DBManager.swift in Sources */,
 				DC2A8DED1E6004A7007DE893 /* YYTextLine.m in Sources */,
 				DC2A8E0F1E6004BB007DE893 /* NSAttributedString+YYText.m in Sources */,
 				DCED887B1E5C259E00DBAD36 /* Card.swift in Sources */,
+				DC7F7C531E67EBC1006DAAA8 /* FMDatabaseAdditions.m in Sources */,
 				DC065DF61E5D2ACE00C96661 /* StringExtension.swift in Sources */,
+				DC7F7C521E67EBC1006DAAA8 /* FMDatabase.m in Sources */,
+				DC7F7C561E67EBC1006DAAA8 /* FMResultSet.m in Sources */,
 				DC2A8DFD1E6004B0007DE893 /* YYTextRubyAnnotation.m in Sources */,
 				DC2A8DEC1E6004A7007DE893 /* YYTextLayout.m in Sources */,
 				DC2A8DD11E60046B007DE893 /* YYTextView.m in Sources */,
@@ -757,6 +822,7 @@
 				DCED88851E5D224900DBAD36 /* Utils.swift in Sources */,
 				DC2A8E131E6004BB007DE893 /* YYTextAsyncLayer.m in Sources */,
 				DC2A8DE81E6004A7007DE893 /* YYTextDebugOption.m in Sources */,
+				DC7F7C541E67EBC1006DAAA8 /* FMDatabasePool.m in Sources */,
 				DC2A8DE91E6004A7007DE893 /* YYTextEffectWindow.m in Sources */,
 				DCED88821E5D1CBB00DBAD36 /* DeckViewController.swift in Sources */,
 				DC442B371E49A07A0006C4E4 /* SpeechViewController.swift in Sources */,
@@ -769,6 +835,7 @@
 				DC2529451E52E650006F2DEC /* NSString+Japanese.m in Sources */,
 				DC2A8DC11E5EE919007DE893 /* Node.m in Sources */,
 				DC2A8DE71E6004A7007DE893 /* YYTextContainerView.m in Sources */,
+				DC7F7C551E67EBC1006DAAA8 /* FMDatabaseQueue.m in Sources */,
 				DC2A8E151E6004BB007DE893 /* YYTextUtilities.m in Sources */,
 				DC442B351E49920C0006C4E4 /* TextTableViewCell.swift in Sources */,
 				DC2A8E161E6004BB007DE893 /* YYTextWeakProxy.m in Sources */,
@@ -776,6 +843,7 @@
 				DC2A8DEE1E6004A7007DE893 /* YYTextMagnifier.m in Sources */,
 				DC2A8DD01E60046B007DE893 /* YYLabel.m in Sources */,
 				DC442B091E496CA40006C4E4 /* ViewController.swift in Sources */,
+				DC7F7C5A1E67EC14006DAAA8 /* FMDatabaseVariadic.swift in Sources */,
 				DC2A8DFC1E6004B0007DE893 /* YYTextParser.m in Sources */,
 				DC442B071E496CA40006C4E4 /* AppDelegate.swift in Sources */,
 				DCED88771E5BEFEF00DBAD36 /* MenuViewController.swift in Sources */,

@@ -212,8 +212,6 @@ SFSpeechRecognizerDelegate  {
                 }
                 score = score * (Float(numberCharFinded) / Float(textStr.characters.count))
             }
-
-            
             
             self.lbScore.text = "\(score)"
             
@@ -288,7 +286,6 @@ SFSpeechRecognizerDelegate  {
             print ("\(error.localizedDescription)")
         }
         
-        
     }
     
     func getDocumentsDirectory() -> URL {
@@ -308,32 +305,28 @@ SFSpeechRecognizerDelegate  {
             let path = Bundle.main.path(forResource: card.name, ofType:"m4a")
             if let path = path {
                 do {
-                    let currentRoute = AVAudioSession.sharedInstance().currentRoute
-                    for description in currentRoute.outputs {
-                        if description.portType == AVAudioSessionPortHeadphones {
-                            try recordingSession.overrideOutputAudioPort(AVAudioSessionPortOverride.none)
-                            print("headphone plugged in")
-                        } else {
-                            print("headphone pulled out")
-                            try recordingSession.overrideOutputAudioPort(AVAudioSessionPortOverride.speaker)
-                        }
-                    }
+                    try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+                    
+//                    let currentRoute = AVAudioSession.sharedInstance().currentRoute
+//                    for description in currentRoute.outputs {
+//                        if description.portType == AVAudioSessionPortHeadphones {
+//                            try recordingSession.overrideOutputAudioPort(AVAudioSessionPortOverride.none)
+//                            print("headphone plugged in")
+//                        } else {
+//                            print("headphone pulled out")
+//                            try recordingSession.overrideOutputAudioPort(AVAudioSessionPortOverride.speaker)
+//                        }
+//                    }
+                    
+                    try AVAudioSession.sharedInstance().setActive(true)
                     
                     let url = URL(fileURLWithPath: path)
                     let sound = try AVAudioPlayer(contentsOf: url)
                     sampleSound = sound
                     sampleSound?.delegate = self
-                    sound.prepareToPlay()
+                    sound.play()
                 } catch {
                     print("get an error:\(error.localizedDescription)")
-                }
-                
-                do {
-                    try recordingSession.setCategory(AVAudioSessionCategoryPlayAndRecord)
-                    try recordingSession.setActive(true)
-                    sampleSound?.play()
-                } catch {
-                    print("get an error 2:\(error.localizedDescription)")
                 }
             } else {
                 let alert = UIAlertController(title: "Alert", message: "File not found", preferredStyle: .alert)
@@ -388,6 +381,7 @@ SFSpeechRecognizerDelegate  {
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         if  sampleSound != nil {
             sampleSound?.stop()
+            sampleSound?.prepareToPlay()
             sampleSound = nil
             btnPlay.setTitle("Play", for: .normal)
         }
