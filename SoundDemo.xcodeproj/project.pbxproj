@@ -87,7 +87,6 @@
 		DC7F7C591E67EC14006DAAA8 /* FMDatabaseAdditionsVariadic.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7F7C571E67EC14006DAAA8 /* FMDatabaseAdditionsVariadic.swift */; };
 		DC7F7C5A1E67EC14006DAAA8 /* FMDatabaseVariadic.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7F7C581E67EC14006DAAA8 /* FMDatabaseVariadic.swift */; };
 		DC7F7C5D1E67EFEA006DAAA8 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7F7C5C1E67EFEA006DAAA8 /* DBManager.swift */; };
-		DC7F7C5F1E67F02C006DAAA8 /* database.db in Resources */ = {isa = PBXBuildFile; fileRef = DC7F7C5E1E67F02C006DAAA8 /* database.db */; };
 		DC7F7C611E67FA69006DAAA8 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = DC7F7C601E67FA69006DAAA8 /* libsqlite3.0.tbd */; };
 		DCED88751E5BEDC200DBAD36 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCED88741E5BEDC200DBAD36 /* SWRevealViewController.m */; };
 		DCED88771E5BEFEF00DBAD36 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCED88761E5BEFEF00DBAD36 /* MenuViewController.swift */; };
@@ -246,7 +245,6 @@
 		DC7F7C571E67EC14006DAAA8 /* FMDatabaseAdditionsVariadic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FMDatabaseAdditionsVariadic.swift; sourceTree = "<group>"; };
 		DC7F7C581E67EC14006DAAA8 /* FMDatabaseVariadic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FMDatabaseVariadic.swift; sourceTree = "<group>"; };
 		DC7F7C5C1E67EFEA006DAAA8 /* DBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
-		DC7F7C5E1E67F02C006DAAA8 /* database.db */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = database.db; sourceTree = "<group>"; };
 		DC7F7C601E67FA69006DAAA8 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		DCED88731E5BEDC200DBAD36 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		DCED88741E5BEDC200DBAD36 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
@@ -529,7 +527,6 @@
 			isa = PBXGroup;
 			children = (
 				DC7F7C5C1E67EFEA006DAAA8 /* DBManager.swift */,
-				DC7F7C5E1E67F02C006DAAA8 /* database.db */,
 			);
 			name = db;
 			sourceTree = "<group>";
@@ -768,7 +765,6 @@
 				DC2A8DB21E5EE901007DE893 /* left-id.def in Resources */,
 				DC2A8DB31E5EE901007DE893 /* matrix.bin in Resources */,
 				DC7F7C2E1E6569EA006DAAA8 /* 2丁目までお願いします.m4a in Resources */,
-				DC7F7C5F1E67F02C006DAAA8 /* database.db in Resources */,
 				DC7F7C2A1E6569EA006DAAA8 /* こんにちは.m4a in Resources */,
 				DC442B0C1E496CA40006C4E4 /* Main.storyboard in Resources */,
 				DC7F7C2B1E6569EA006DAAA8 /* こんばんは.m4a in Resources */,
