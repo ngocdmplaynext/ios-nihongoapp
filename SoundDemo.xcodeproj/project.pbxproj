@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A6B31DD8440D432EA12132D6 /* Pods_SoundDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A307A0B48411D1E9610AD9A /* Pods_SoundDemo.framework */; };
+		B44221346DB23D3A643D64A3 /* Pods_SoundDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D47FD6A023BB9C84E424A28C /* Pods_SoundDemoTests.framework */; };
+		C068F918E6A8F1C3F1BFB638 /* Pods_SoundDemoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87E7D3C4D24FB798925273A1 /* Pods_SoundDemoUITests.framework */; };
 		DC065DF61E5D2ACE00C96661 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC065DF51E5D2ACE00C96661 /* StringExtension.swift */; };
 		DC18D9A41E519FF6002596E9 /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC18D9A31E519FF6002596E9 /* CardViewController.swift */; };
 		DC2529451E52E650006F2DEC /* NSString+Japanese.m in Sources */ = {isa = PBXBuildFile; fileRef = DC2529441E52E650006F2DEC /* NSString+Japanese.m */; };
@@ -58,7 +61,6 @@
 		DC442B1C1E496CA40006C4E4 /* SoundDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC442B1B1E496CA40006C4E4 /* SoundDemoTests.swift */; };
 		DC442B271E496CA40006C4E4 /* SoundDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC442B261E496CA40006C4E4 /* SoundDemoUITests.swift */; };
 		DC442B351E49920C0006C4E4 /* TextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC442B341E49920C0006C4E4 /* TextTableViewCell.swift */; };
-		DC442B371E49A07A0006C4E4 /* SpeechViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC442B361E49A07A0006C4E4 /* SpeechViewController.swift */; };
 		DC7F7C251E6569EA006DAAA8 /* あそこに見えるのがスカイツリーです.m4a in Resources */ = {isa = PBXBuildFile; fileRef = DC7F7C111E6569EA006DAAA8 /* あそこに見えるのがスカイツリーです.m4a */; };
 		DC7F7C261E6569EA006DAAA8 /* あれが浅草寺です.m4a in Resources */ = {isa = PBXBuildFile; fileRef = DC7F7C121E6569EA006DAAA8 /* あれが浅草寺です.m4a */; };
 		DC7F7C271E6569EA006DAAA8 /* いい天気ですね.m4a in Resources */ = {isa = PBXBuildFile; fileRef = DC7F7C131E6569EA006DAAA8 /* いい天気ですね.m4a */; };
@@ -88,6 +90,9 @@
 		DC7F7C5A1E67EC14006DAAA8 /* FMDatabaseVariadic.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7F7C581E67EC14006DAAA8 /* FMDatabaseVariadic.swift */; };
 		DC7F7C5D1E67EFEA006DAAA8 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7F7C5C1E67EFEA006DAAA8 /* DBManager.swift */; };
 		DC7F7C611E67FA69006DAAA8 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = DC7F7C601E67FA69006DAAA8 /* libsqlite3.0.tbd */; };
+		DC9D13BD1E80D171000CA9DF /* SentenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9D13BC1E80D171000CA9DF /* SentenceViewController.swift */; };
+		DC9D13BF1E80D1BB000CA9DF /* SentenceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9D13BE1E80D1BB000CA9DF /* SentenceTableViewCell.swift */; };
+		DCB4A2931E6FE50300A47F57 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB4A2921E6FE50300A47F57 /* NetworkManager.swift */; };
 		DCED88751E5BEDC200DBAD36 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCED88741E5BEDC200DBAD36 /* SWRevealViewController.m */; };
 		DCED88771E5BEFEF00DBAD36 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCED88761E5BEFEF00DBAD36 /* MenuViewController.swift */; };
 		DCED88791E5C122500DBAD36 /* reveal-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCED88781E5C122500DBAD36 /* reveal-icon@2x.png */; };
@@ -124,6 +129,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		15DE572ED7B4430684BEC69E /* Pods-SoundDemoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoundDemoUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SoundDemoUITests/Pods-SoundDemoUITests.release.xcconfig"; sourceTree = "<group>"; };
+		2D32FE081D361A3ED76AA40E /* Pods-SoundDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoundDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-SoundDemo/Pods-SoundDemo.release.xcconfig"; sourceTree = "<group>"; };
+		506494C453727B112E494331 /* Pods-SoundDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoundDemoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SoundDemoTests/Pods-SoundDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
+		7DD84A85EDEECAE53725C1C5 /* Pods-SoundDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoundDemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SoundDemoTests/Pods-SoundDemoTests.release.xcconfig"; sourceTree = "<group>"; };
+		87E7D3C4D24FB798925273A1 /* Pods_SoundDemoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SoundDemoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A307A0B48411D1E9610AD9A /* Pods_SoundDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SoundDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B595A07A2463EE78CC804E15 /* Pods-SoundDemoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoundDemoUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SoundDemoUITests/Pods-SoundDemoUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		D47FD6A023BB9C84E424A28C /* Pods_SoundDemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SoundDemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC065DF51E5D2ACE00C96661 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		DC18D9A31E519FF6002596E9 /* CardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
 		DC2529421E52E64F006F2DEC /* SoundDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SoundDemo-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -210,7 +223,6 @@
 		DC442B261E496CA40006C4E4 /* SoundDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundDemoUITests.swift; sourceTree = "<group>"; };
 		DC442B281E496CA40006C4E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DC442B341E49920C0006C4E4 /* TextTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextTableViewCell.swift; sourceTree = "<group>"; };
-		DC442B361E49A07A0006C4E4 /* SpeechViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechViewController.swift; sourceTree = "<group>"; };
 		DC7F7C111E6569EA006DAAA8 /* あそこに見えるのがスカイツリーです.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "あそこに見えるのがスカイツリーです.m4a"; sourceTree = "<group>"; };
 		DC7F7C121E6569EA006DAAA8 /* あれが浅草寺です.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "あれが浅草寺です.m4a"; sourceTree = "<group>"; };
 		DC7F7C131E6569EA006DAAA8 /* いい天気ですね.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "いい天気ですね.m4a"; sourceTree = "<group>"; };
@@ -246,6 +258,9 @@
 		DC7F7C581E67EC14006DAAA8 /* FMDatabaseVariadic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FMDatabaseVariadic.swift; sourceTree = "<group>"; };
 		DC7F7C5C1E67EFEA006DAAA8 /* DBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
 		DC7F7C601E67FA69006DAAA8 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		DC9D13BC1E80D171000CA9DF /* SentenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentenceViewController.swift; sourceTree = "<group>"; };
+		DC9D13BE1E80D1BB000CA9DF /* SentenceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentenceTableViewCell.swift; sourceTree = "<group>"; };
+		DCB4A2921E6FE50300A47F57 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		DCED88731E5BEDC200DBAD36 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		DCED88741E5BEDC200DBAD36 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		DCED88761E5BEFEF00DBAD36 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
@@ -256,6 +271,7 @@
 		DCED88811E5D1CBB00DBAD36 /* DeckViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeckViewController.swift; sourceTree = "<group>"; };
 		DCED88841E5D224900DBAD36 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		DCED888B1E5D244800DBAD36 /* DeckTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeckTableViewCell.swift; sourceTree = "<group>"; };
+		E65916EFC02E11F224EC15B3 /* Pods-SoundDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoundDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SoundDemo/Pods-SoundDemo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -267,6 +283,7 @@
 				DC2A8DC81E5EE99C007DE893 /* libstdc++.tbd in Frameworks */,
 				DC2A8DC61E5EE983007DE893 /* libiconv.tbd in Frameworks */,
 				DC2A8DC31E5EE970007DE893 /* libmecab.a in Frameworks */,
+				A6B31DD8440D432EA12132D6 /* Pods_SoundDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,6 +291,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B44221346DB23D3A643D64A3 /* Pods_SoundDemoTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,12 +299,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C068F918E6A8F1C3F1BFB638 /* Pods_SoundDemoUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B469F7185901E9709F2B8AB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E65916EFC02E11F224EC15B3 /* Pods-SoundDemo.debug.xcconfig */,
+				2D32FE081D361A3ED76AA40E /* Pods-SoundDemo.release.xcconfig */,
+				506494C453727B112E494331 /* Pods-SoundDemoTests.debug.xcconfig */,
+				7DD84A85EDEECAE53725C1C5 /* Pods-SoundDemoTests.release.xcconfig */,
+				B595A07A2463EE78CC804E15 /* Pods-SoundDemoUITests.debug.xcconfig */,
+				15DE572ED7B4430684BEC69E /* Pods-SoundDemoUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		DC2A8DA11E5EE8DC007DE893 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -329,6 +361,9 @@
 				DC7F7C601E67FA69006DAAA8 /* libsqlite3.0.tbd */,
 				DC2A8DC71E5EE99C007DE893 /* libstdc++.tbd */,
 				DC2A8DC51E5EE983007DE893 /* libiconv.tbd */,
+				9A307A0B48411D1E9610AD9A /* Pods_SoundDemo.framework */,
+				D47FD6A023BB9C84E424A28C /* Pods_SoundDemoTests.framework */,
+				87E7D3C4D24FB798925273A1 /* Pods_SoundDemoUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -422,6 +457,7 @@
 				DC442B251E496CA40006C4E4 /* SoundDemoUITests */,
 				DC442B041E496CA40006C4E4 /* Products */,
 				DC2A8DC41E5EE982007DE893 /* Frameworks */,
+				5B469F7185901E9709F2B8AB /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -438,6 +474,7 @@
 		DC442B051E496CA40006C4E4 /* SoundDemo */ = {
 			isa = PBXGroup;
 			children = (
+				DCB4A2911E6FE4CB00A47F57 /* Network */,
 				DC7F7C5B1E67EFC8006DAAA8 /* db */,
 				DC7F7C461E67EB81006DAAA8 /* fmdb */,
 				DC7F7C0F1E6569DF006DAAA8 /* Sound */,
@@ -531,6 +568,14 @@
 			name = db;
 			sourceTree = "<group>";
 		};
+		DCB4A2911E6FE4CB00A47F57 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				DCB4A2921E6FE50300A47F57 /* NetworkManager.swift */,
+			);
+			name = Network;
+			sourceTree = "<group>";
+		};
 		DCED88721E5BEDB100DBAD36 /* SWRevealViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -567,6 +612,7 @@
 			children = (
 				DC442B341E49920C0006C4E4 /* TextTableViewCell.swift */,
 				DCED888B1E5D244800DBAD36 /* DeckTableViewCell.swift */,
+				DC9D13BE1E80D1BB000CA9DF /* SentenceTableViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -575,11 +621,11 @@
 			isa = PBXGroup;
 			children = (
 				DC442B081E496CA40006C4E4 /* ViewController.swift */,
-				DC442B361E49A07A0006C4E4 /* SpeechViewController.swift */,
 				DC18D9A31E519FF6002596E9 /* CardViewController.swift */,
 				DCED88761E5BEFEF00DBAD36 /* MenuViewController.swift */,
 				DCED88811E5D1CBB00DBAD36 /* DeckViewController.swift */,
 				DC2A8E171E603347007DE893 /* MistakeViewController.swift */,
+				DC9D13BC1E80D171000CA9DF /* SentenceViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -617,9 +663,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DC442B2B1E496CA40006C4E4 /* Build configuration list for PBXNativeTarget "SoundDemo" */;
 			buildPhases = (
+				BBF0D7E967593746FB204487 /* [CP] Check Pods Manifest.lock */,
 				DC442AFF1E496CA40006C4E4 /* Sources */,
 				DC442B001E496CA40006C4E4 /* Frameworks */,
 				DC442B011E496CA40006C4E4 /* Resources */,
+				35131878458B68BE11ACAE95 /* [CP] Embed Pods Frameworks */,
+				AEA0AAF6B7A69417C11352A5 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -634,9 +683,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DC442B2E1E496CA40006C4E4 /* Build configuration list for PBXNativeTarget "SoundDemoTests" */;
 			buildPhases = (
+				539801CA9EAA8B45C828AB55 /* [CP] Check Pods Manifest.lock */,
 				DC442B131E496CA40006C4E4 /* Sources */,
 				DC442B141E496CA40006C4E4 /* Frameworks */,
 				DC442B151E496CA40006C4E4 /* Resources */,
+				10BA86438EDDAEE1C1D6E990 /* [CP] Embed Pods Frameworks */,
+				7C91BB2174191C1486E26988 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -652,9 +704,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DC442B311E496CA40006C4E4 /* Build configuration list for PBXNativeTarget "SoundDemoUITests" */;
 			buildPhases = (
+				3AEF310E97E3AA372A789E73 /* [CP] Check Pods Manifest.lock */,
 				DC442B1E1E496CA40006C4E4 /* Sources */,
 				DC442B1F1E496CA40006C4E4 /* Frameworks */,
 				DC442B201E496CA40006C4E4 /* Resources */,
+				1B5D0AA931B13D317C5AC9C7 /* [CP] Embed Pods Frameworks */,
+				FCEA0938B9CA77DAD77661D6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -788,6 +843,144 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		10BA86438EDDAEE1C1D6E990 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SoundDemoTests/Pods-SoundDemoTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1B5D0AA931B13D317C5AC9C7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SoundDemoUITests/Pods-SoundDemoUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		35131878458B68BE11ACAE95 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SoundDemo/Pods-SoundDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3AEF310E97E3AA372A789E73 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		539801CA9EAA8B45C828AB55 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		7C91BB2174191C1486E26988 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SoundDemoTests/Pods-SoundDemoTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AEA0AAF6B7A69417C11352A5 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SoundDemo/Pods-SoundDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BBF0D7E967593746FB204487 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FCEA0938B9CA77DAD77661D6 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SoundDemoUITests/Pods-SoundDemoUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		DC442AFF1E496CA40006C4E4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -820,14 +1013,15 @@
 				DC2A8DE81E6004A7007DE893 /* YYTextDebugOption.m in Sources */,
 				DC7F7C541E67EBC1006DAAA8 /* FMDatabasePool.m in Sources */,
 				DC2A8DE91E6004A7007DE893 /* YYTextEffectWindow.m in Sources */,
+				DCB4A2931E6FE50300A47F57 /* NetworkManager.swift in Sources */,
 				DCED88821E5D1CBB00DBAD36 /* DeckViewController.swift in Sources */,
-				DC442B371E49A07A0006C4E4 /* SpeechViewController.swift in Sources */,
 				DC2A8DEB1E6004A7007DE893 /* YYTextKeyboardManager.m in Sources */,
 				DC2A8E121E6004BB007DE893 /* UIView+YYText.m in Sources */,
 				DC2A8DFB1E6004B0007DE893 /* YYTextAttribute.m in Sources */,
 				DC2A8DFA1E6004B0007DE893 /* YYTextArchiver.m in Sources */,
 				DC2A8E181E603347007DE893 /* MistakeViewController.swift in Sources */,
 				DCED888C1E5D244800DBAD36 /* DeckTableViewCell.swift in Sources */,
+				DC9D13BD1E80D171000CA9DF /* SentenceViewController.swift in Sources */,
 				DC2529451E52E650006F2DEC /* NSString+Japanese.m in Sources */,
 				DC2A8DC11E5EE919007DE893 /* Node.m in Sources */,
 				DC2A8DE71E6004A7007DE893 /* YYTextContainerView.m in Sources */,
@@ -838,6 +1032,7 @@
 				DC2A8DC01E5EE919007DE893 /* MeCabUtil.m in Sources */,
 				DC2A8DEE1E6004A7007DE893 /* YYTextMagnifier.m in Sources */,
 				DC2A8DD01E60046B007DE893 /* YYLabel.m in Sources */,
+				DC9D13BF1E80D1BB000CA9DF /* SentenceTableViewCell.swift in Sources */,
 				DC442B091E496CA40006C4E4 /* ViewController.swift in Sources */,
 				DC7F7C5A1E67EC14006DAAA8 /* FMDatabaseVariadic.swift in Sources */,
 				DC2A8DFC1E6004B0007DE893 /* YYTextParser.m in Sources */,
@@ -992,6 +1187,7 @@
 		};
 		DC442B2C1E496CA40006C4E4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E65916EFC02E11F224EC15B3 /* Pods-SoundDemo.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1011,6 +1207,7 @@
 		};
 		DC442B2D1E496CA40006C4E4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2D32FE081D361A3ED76AA40E /* Pods-SoundDemo.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1029,6 +1226,7 @@
 		};
 		DC442B2F1E496CA40006C4E4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 506494C453727B112E494331 /* Pods-SoundDemoTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1043,6 +1241,7 @@
 		};
 		DC442B301E496CA40006C4E4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7DD84A85EDEECAE53725C1C5 /* Pods-SoundDemoTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1057,6 +1256,7 @@
 		};
 		DC442B321E496CA40006C4E4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B595A07A2463EE78CC804E15 /* Pods-SoundDemoUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = SoundDemoUITests/Info.plist;
@@ -1070,6 +1270,7 @@
 		};
 		DC442B331E496CA40006C4E4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 15DE572ED7B4430684BEC69E /* Pods-SoundDemoUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = SoundDemoUITests/Info.plist;

@@ -11,18 +11,35 @@ import UIKit
 class DeckViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    var themeId: Int = 0
+    
     var decks = [Deck]()
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if !DBManager.shared.hasDeckData(byThemeId: themeId) {
+            NetworkManager.shared.getInitDeckData(byThemeId: themeId, completion: { (decks, error) in
+                if let decks = decks {
+                    self.decks = decks
+                    self.tableView.reloadData()
+                } else {
+                    print("can't load init deck data")
+                }
+            })
+        } else {
+            self.decks = DBManager.shared.loadDecksData(byThemeId: themeId)
+            self.tableView.reloadData()
+        }
+
     }
 }
 
 extension DeckViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let deck = self.decks[indexPath.row]
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if let controller = storyboard.instantiateViewController(withIdentifier: "kCardViewController") as? CardViewController {
-            controller.card = decks[indexPath.row].card
+        if let controller = storyboard.instantiateViewController(withIdentifier: "kSentenceViewController") as? SentenceViewController {
+            controller.deckId = deck.deckId
             self.navigationController?.pushViewController(controller, animated: true)
         }
         

@@ -10,9 +10,9 @@ import UIKit
 
 struct Theme {
     var name: String
-    var decks: [Deck]
-    init(name: String, decks: [Deck]) {
+    var themeId: Int
+    init(name: String, themeId: Int) {
         self.name = name
-        self.decks = decks
+        self.themeId = themeId
     }
 }

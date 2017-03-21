@@ -17,6 +17,12 @@ public func heightForView(text:String, font:UIFont, width:CGFloat) -> CGFloat{
     return label.frame.height
 }
 
+func getDocumentsDirectory() -> URL {
+    let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+    let documentsDirectory = paths[0]
+    return documentsDirectory
+}
+
 func arrayCrossJoin<A, B, R>(
     aArray: [A],
     bArray: [B],

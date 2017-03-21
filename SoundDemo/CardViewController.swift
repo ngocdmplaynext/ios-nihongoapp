@@ -11,7 +11,8 @@ import Speech
 
 class CardViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPlayerDelegate, 
 SFSpeechRecognizerDelegate  {
-    var card: Card = Card()
+    var deckId: Int = 0
+    var cards: [Card] = [Card]()
     
     @IBOutlet weak var btnPlay: UIButton!
     @IBOutlet weak var lbRomaji: UILabel!
@@ -36,15 +37,29 @@ SFSpeechRecognizerDelegate  {
         self.lbResult.textVerticalAlignment = .center
         
         recordingSession = AVAudioSession.sharedInstance()
-        lbTitle.text = card.name
-        lbRomaji.text = card.romaji
+       // lbTitle.text = card.name
+       // lbRomaji.text = MeCabUtil.shared().stringJapanese(toRomaji: card.name)
         
         btnRecord.isEnabled = false
+        
+        if !DBManager.shared.hasCardData(byDeckId: deckId) {
+            NetworkManager.shared.getInitCardData(byDeckId: deckId, completion: { (cards, error) in
+                if let cards = cards {
+                    self.cards = cards
+                    //self.tableView.reloadData()
+                } else {
+                    print("can't load init theme data")
+                }
+            })
+        } else {
+            self.cards = DBManager.shared.loadCardsData(byDeckId: deckId)
+            //self.tableView.reloadData()
+        }
         
         recordingSession.requestRecordPermission() { [unowned self] allowed in
             DispatchQueue.main.async {
                 if allowed {
-                    self.loadRecordingUI()
+                    self.enableRecord()
                 } else {
                     // failed to record!
                     print("failed to record! 1")
@@ -107,7 +122,7 @@ SFSpeechRecognizerDelegate  {
             var numberCharFinded: Int = 0
             
             let symbols = ["！","、","。","？"]
-            let textStr = self.card.name
+            let textStr = ""
             
             let attributedString = NSMutableAttributedString(string:textStr)
             attributedString.addAttribute(NSForegroundColorAttributeName, value: UIColor.red , range: NSRange(location: 0, length: textStr.characters.count))
@@ -254,7 +269,7 @@ SFSpeechRecognizerDelegate  {
     
     }
     
-    func loadRecordingUI() {
+    func enableRecord() {
         btnRecord.isHidden = false
     }
     
@@ -288,12 +303,6 @@ SFSpeechRecognizerDelegate  {
         
     }
     
-    func getDocumentsDirectory() -> URL {
-        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        let documentsDirectory = paths[0]
-        return documentsDirectory
-    }
-    
     @IBAction func play(_ sender: UIButton) {
         
         let isPlaying = sampleSound?.isPlaying ?? false
@@ -302,7 +311,7 @@ SFSpeechRecognizerDelegate  {
             sender.setTitle("Play", for: .normal)
         } else {
             sender.setTitle("Stop", for: .normal)
-            let path = Bundle.main.path(forResource: card.name, ofType:"m4a")
+            let path = Bundle.main.path(forResource: "", ofType:"m4a")
             if let path = path {
                 do {
                     try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
@@ -337,7 +346,7 @@ SFSpeechRecognizerDelegate  {
     }
 
     @IBAction func testSampleSound(_ sender: UIButton) {
-        let path = Bundle.main.path(forResource: card.name, ofType:"m4a")
+        let path = Bundle.main.path(forResource: "", ofType:"m4a")
         if let path = path {
             let url = URL(fileURLWithPath: path)
             

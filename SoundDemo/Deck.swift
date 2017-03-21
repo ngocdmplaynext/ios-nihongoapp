@@ -10,9 +10,11 @@ import UIKit
 
 struct Deck {
     var name: String
-    var card: Card
-    init(name: String, card: Card) {
+    var deckId: Int
+    var themeId: Int
+    init(name: String, deckId: Int, themeId: Int) {
         self.name = name
-        self.card = card
+        self.deckId = deckId
+        self.themeId = themeId
     }
 }
