@@ -39,7 +39,7 @@ class NetworkManager: NSObject {
                         for themeDic in arrDic {
                             if let name = themeDic["name"] as? String, let themeId = themeDic["id"] as? Int {
                                 let theme = Theme(name: name, themeId: themeId)
-                                DBManager.shared.saveThemeData(theme: theme)
+                                //DBManager.shared.saveThemeData(theme: theme)
                                 themes.append(theme)
                             }
                         }
@@ -71,7 +71,7 @@ class NetworkManager: NSObject {
                         for deckDic in arrDic {
                             if let name = deckDic["name"] as? String, let deckId = deckDic["id"] as? Int, let themeId = deckDic["theme_id"] as? Int {
                                 let deck = Deck(name: name, deckId: deckId, themeId: themeId)
-                                DBManager.shared.saveDeckData(deck: deck)
+                                //DBManager.shared.saveDeckData(deck: deck)
                                 decks.append(deck)
                             }
                         }
@@ -103,7 +103,7 @@ class NetworkManager: NSObject {
                         for cardDic in arrDic {
                             if let name = cardDic["name"] as? String, let cardId = cardDic["id"] as? Int, let deckId = cardDic["deck_id"] as? Int, let audioUrl = cardDic["audio_url"] as? String {
                                 let card = Card(name: name, cardId: cardId, deckId: deckId, audioUrl: audioUrl, bestScore: 0)
-                                DBManager.shared.saveCardData(card: card)
+                               // DBManager.shared.saveCardData(card: card)
                                 cards.append(card)
                             }
                         }
@@ -116,6 +116,68 @@ class NetworkManager: NSObject {
         }
         
     }
+    
+    func createDeck(themeId:Int, topic: String, sentences: [RecordSentence], completion: (() -> Void)? = nil) {
+        let path: String = String(format: urlWithPath(path: deckPath), themeId)
+        
+        guard let url = try? URLRequest(url: path, method: .post, headers: nil) else {
+            return
+        }
+        
+        Alamofire.upload(multipartFormData: { (multipartFormData) in
+            let sentenceArr = sentences.map({ (s) -> String in
+                return s.sentence
+            })
+            
+            let sentenceStr = sentenceArr.joined(separator: ",")
+            multipartFormData.append(sentenceStr.data(using: String.Encoding.utf8, allowLossyConversion: false)!, withName: "sentence")
+            multipartFormData.append(topic.data(using: String.Encoding.utf8, allowLossyConversion: false)!, withName: "topic")
+            
+            var i = 0
+            var fileNames: [String] = [String]()
+            for sentence in sentences {
+                i = i + 1
+                let fileName = "file\(i)"
+                multipartFormData.append(sentence.audioUrl, withName: fileName)
+                fileNames.append(fileName)
+            }
+            
+            let fileNamesStr = fileNames.joined(separator: ",")
+            multipartFormData.append(fileNamesStr.data(using: String.Encoding.utf8, allowLossyConversion: false)!, withName: "file_name")
+        }, with: url, encodingCompletion: { (result) in
+            switch result {
+            case .success(let upload, _, _):
+                
+                upload.uploadProgress(closure: { (progress) in
+                    //Print progress
+                })
+                
+                upload.responseJSON { response in
+                    //print response.result
+                    completion?()
+                }
+                
+            case .failure(_):
+                completion?()
+                break
+            }
+            
+        })
+    }
+    
+    func downLoadFile(card: Card, completion: ((_ filePath: URL?) -> Void)? = nil) {
+        let destination: DownloadRequest.DownloadFileDestination = { _, _ in
+            var documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+            documentsURL.appendPathComponent("card\(card.cardId).m4a")
+            return (documentsURL, [.removePreviousFile])
+        }
+        
+        Alamofire.download(card.audioUrl, to: destination).response { response in
+            print("\(response.error)")
+            completion?(response.destinationURL)
+        }
+    }
+    
 }
 
 

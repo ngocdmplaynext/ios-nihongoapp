@@ -17,20 +17,43 @@ class DeckViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if !DBManager.shared.hasDeckData(byThemeId: themeId) {
-            NetworkManager.shared.getInitDeckData(byThemeId: themeId, completion: { (decks, error) in
-                if let decks = decks {
-                    self.decks = decks
-                    self.tableView.reloadData()
-                } else {
-                    print("can't load init deck data")
-                }
-            })
-        } else {
-            self.decks = DBManager.shared.loadDecksData(byThemeId: themeId)
-            self.tableView.reloadData()
-        }
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(createDeck))
+        
+//        if !DBManager.shared.hasDeckData(byThemeId: themeId) {
+//            NetworkManager.shared.getInitDeckData(byThemeId: themeId, completion: { (decks, error) in
+//                if let decks = decks {
+//                    self.decks = decks
+//                    self.tableView.reloadData()
+//                } else {
+//                    print("can't load init deck data")
+//                }
+//            })
+//        } else {
+//            self.decks = DBManager.shared.loadDecksData(byThemeId: themeId)
+//            self.tableView.reloadData()
+//        }
 
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        NetworkManager.shared.getInitDeckData(byThemeId: themeId, completion: { (decks, error) in
+            if let decks = decks {
+                self.decks = decks
+                self.tableView.reloadData()
+            } else {
+                print("can't load init deck data")
+            }
+        })
+    }
+    
+    func createDeck() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let controller = storyboard.instantiateViewController(withIdentifier: "kCreateDeckViewController") as? CreateDeckViewController {
+            controller.themeId = self.themeId
+            self.present(controller, animated: true, completion: nil)
+        }
     }
 }
 

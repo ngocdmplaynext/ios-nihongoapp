@@ -61,6 +61,9 @@
 		DC442B1C1E496CA40006C4E4 /* SoundDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC442B1B1E496CA40006C4E4 /* SoundDemoTests.swift */; };
 		DC442B271E496CA40006C4E4 /* SoundDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC442B261E496CA40006C4E4 /* SoundDemoUITests.swift */; };
 		DC442B351E49920C0006C4E4 /* TextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC442B341E49920C0006C4E4 /* TextTableViewCell.swift */; };
+		DC46366A1E81219B00FD8BB9 /* CreateDeckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4636691E81219B00FD8BB9 /* CreateDeckViewController.swift */; };
+		DC46366C1E81225900FD8BB9 /* CreateDeckTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC46366B1E81225900FD8BB9 /* CreateDeckTableViewCell.swift */; };
+		DC46366E1E82124800FD8BB9 /* RecordSentence.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC46366D1E82124800FD8BB9 /* RecordSentence.swift */; };
 		DC7F7C251E6569EA006DAAA8 /* あそこに見えるのがスカイツリーです.m4a in Resources */ = {isa = PBXBuildFile; fileRef = DC7F7C111E6569EA006DAAA8 /* あそこに見えるのがスカイツリーです.m4a */; };
 		DC7F7C261E6569EA006DAAA8 /* あれが浅草寺です.m4a in Resources */ = {isa = PBXBuildFile; fileRef = DC7F7C121E6569EA006DAAA8 /* あれが浅草寺です.m4a */; };
 		DC7F7C271E6569EA006DAAA8 /* いい天気ですね.m4a in Resources */ = {isa = PBXBuildFile; fileRef = DC7F7C131E6569EA006DAAA8 /* いい天気ですね.m4a */; };
@@ -90,6 +93,8 @@
 		DC7F7C5A1E67EC14006DAAA8 /* FMDatabaseVariadic.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7F7C581E67EC14006DAAA8 /* FMDatabaseVariadic.swift */; };
 		DC7F7C5D1E67EFEA006DAAA8 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7F7C5C1E67EFEA006DAAA8 /* DBManager.swift */; };
 		DC7F7C611E67FA69006DAAA8 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = DC7F7C601E67FA69006DAAA8 /* libsqlite3.0.tbd */; };
+		DC85B0DF1E84E6E500DBC73D /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC85B0DE1E84E6E500DBC73D /* ScoreView.swift */; };
+		DC85B0E11E84F72000DBC73D /* WrongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC85B0E01E84F72000DBC73D /* WrongViewController.swift */; };
 		DC9D13BD1E80D171000CA9DF /* SentenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9D13BC1E80D171000CA9DF /* SentenceViewController.swift */; };
 		DC9D13BF1E80D1BB000CA9DF /* SentenceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9D13BE1E80D1BB000CA9DF /* SentenceTableViewCell.swift */; };
 		DCB4A2931E6FE50300A47F57 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB4A2921E6FE50300A47F57 /* NetworkManager.swift */; };
@@ -223,6 +228,9 @@
 		DC442B261E496CA40006C4E4 /* SoundDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundDemoUITests.swift; sourceTree = "<group>"; };
 		DC442B281E496CA40006C4E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DC442B341E49920C0006C4E4 /* TextTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextTableViewCell.swift; sourceTree = "<group>"; };
+		DC4636691E81219B00FD8BB9 /* CreateDeckViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateDeckViewController.swift; sourceTree = "<group>"; };
+		DC46366B1E81225900FD8BB9 /* CreateDeckTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateDeckTableViewCell.swift; sourceTree = "<group>"; };
+		DC46366D1E82124800FD8BB9 /* RecordSentence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordSentence.swift; sourceTree = "<group>"; };
 		DC7F7C111E6569EA006DAAA8 /* あそこに見えるのがスカイツリーです.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "あそこに見えるのがスカイツリーです.m4a"; sourceTree = "<group>"; };
 		DC7F7C121E6569EA006DAAA8 /* あれが浅草寺です.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "あれが浅草寺です.m4a"; sourceTree = "<group>"; };
 		DC7F7C131E6569EA006DAAA8 /* いい天気ですね.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "いい天気ですね.m4a"; sourceTree = "<group>"; };
@@ -258,6 +266,8 @@
 		DC7F7C581E67EC14006DAAA8 /* FMDatabaseVariadic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FMDatabaseVariadic.swift; sourceTree = "<group>"; };
 		DC7F7C5C1E67EFEA006DAAA8 /* DBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
 		DC7F7C601E67FA69006DAAA8 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		DC85B0DE1E84E6E500DBC73D /* ScoreView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreView.swift; sourceTree = "<group>"; };
+		DC85B0E01E84F72000DBC73D /* WrongViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WrongViewController.swift; sourceTree = "<group>"; };
 		DC9D13BC1E80D171000CA9DF /* SentenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentenceViewController.swift; sourceTree = "<group>"; };
 		DC9D13BE1E80D1BB000CA9DF /* SentenceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentenceTableViewCell.swift; sourceTree = "<group>"; };
 		DCB4A2921E6FE50300A47F57 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -592,6 +602,7 @@
 				DCED887A1E5C259E00DBAD36 /* Card.swift */,
 				DCED887C1E5C2E1000DBAD36 /* Deck.swift */,
 				DCED887F1E5C303A00DBAD36 /* Theme.swift */,
+				DC46366D1E82124800FD8BB9 /* RecordSentence.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -613,6 +624,8 @@
 				DC442B341E49920C0006C4E4 /* TextTableViewCell.swift */,
 				DCED888B1E5D244800DBAD36 /* DeckTableViewCell.swift */,
 				DC9D13BE1E80D1BB000CA9DF /* SentenceTableViewCell.swift */,
+				DC46366B1E81225900FD8BB9 /* CreateDeckTableViewCell.swift */,
+				DC85B0DE1E84E6E500DBC73D /* ScoreView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -626,6 +639,8 @@
 				DCED88811E5D1CBB00DBAD36 /* DeckViewController.swift */,
 				DC2A8E171E603347007DE893 /* MistakeViewController.swift */,
 				DC9D13BC1E80D171000CA9DF /* SentenceViewController.swift */,
+				DC4636691E81219B00FD8BB9 /* CreateDeckViewController.swift */,
+				DC85B0E01E84F72000DBC73D /* WrongViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -997,9 +1012,12 @@
 				DCED887B1E5C259E00DBAD36 /* Card.swift in Sources */,
 				DC7F7C531E67EBC1006DAAA8 /* FMDatabaseAdditions.m in Sources */,
 				DC065DF61E5D2ACE00C96661 /* StringExtension.swift in Sources */,
+				DC46366E1E82124800FD8BB9 /* RecordSentence.swift in Sources */,
 				DC7F7C521E67EBC1006DAAA8 /* FMDatabase.m in Sources */,
 				DC7F7C561E67EBC1006DAAA8 /* FMResultSet.m in Sources */,
 				DC2A8DFD1E6004B0007DE893 /* YYTextRubyAnnotation.m in Sources */,
+				DC46366C1E81225900FD8BB9 /* CreateDeckTableViewCell.swift in Sources */,
+				DC85B0E11E84F72000DBC73D /* WrongViewController.swift in Sources */,
 				DC2A8DEC1E6004A7007DE893 /* YYTextLayout.m in Sources */,
 				DC2A8DD11E60046B007DE893 /* YYTextView.m in Sources */,
 				DCED887D1E5C2E1000DBAD36 /* Deck.swift in Sources */,
@@ -1009,11 +1027,13 @@
 				DC2A8E141E6004BB007DE893 /* YYTextTransaction.m in Sources */,
 				DCED88801E5C303A00DBAD36 /* Theme.swift in Sources */,
 				DCED88851E5D224900DBAD36 /* Utils.swift in Sources */,
+				DC85B0DF1E84E6E500DBC73D /* ScoreView.swift in Sources */,
 				DC2A8E131E6004BB007DE893 /* YYTextAsyncLayer.m in Sources */,
 				DC2A8DE81E6004A7007DE893 /* YYTextDebugOption.m in Sources */,
 				DC7F7C541E67EBC1006DAAA8 /* FMDatabasePool.m in Sources */,
 				DC2A8DE91E6004A7007DE893 /* YYTextEffectWindow.m in Sources */,
 				DCB4A2931E6FE50300A47F57 /* NetworkManager.swift in Sources */,
+				DC46366A1E81219B00FD8BB9 /* CreateDeckViewController.swift in Sources */,
 				DCED88821E5D1CBB00DBAD36 /* DeckViewController.swift in Sources */,
 				DC2A8DEB1E6004A7007DE893 /* YYTextKeyboardManager.m in Sources */,
 				DC2A8E121E6004BB007DE893 /* UIView+YYText.m in Sources */,

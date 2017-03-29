@@ -26,21 +26,30 @@ class ViewController: UIViewController {
             view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
         }
         
-        if !DBManager.shared.hasThemeData() {
-            NetworkManager.shared.getInitThemeData(completion: { (themes, error) in
-                if let themes = themes {
-                    self.themes = themes
-                    self.tableView.reloadData()
-                } else {
-                    print("can't load init theme data")
-                }
-            })
-        } else {
-            self.themes = DBManager.shared.loadThemesData()
-            self.tableView.reloadData()
-        }
-    }
+//        if !DBManager.shared.hasThemeData() {
+//            NetworkManager.shared.getInitThemeData(completion: { (themes, error) in
+//                if let themes = themes {
+//                    self.themes = themes
+//                    self.tableView.reloadData()
+//                } else {
+//                    print("can't load init theme data")
+//                }
+//            })
+//        } else {
+//            self.themes = DBManager.shared.loadThemesData()
+//            self.tableView.reloadData()
+//        }
         
+        NetworkManager.shared.getInitThemeData(completion: { (themes, error) in
+            if let themes = themes {
+                self.themes = themes
+                self.tableView.reloadData()
+            } else {
+                print("can't load init theme data")
+            }
+        })
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
