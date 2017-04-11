@@ -52,6 +52,8 @@ class CreateDeckViewController: UIViewController, SFSpeechRecognizerDelegate, AV
         
         prepareRecognizer(locale: defaultLocale)
         
+        cleanDocumentsDirectory()
+        
         // Do any additional setup after loading the view.
     }
     
@@ -92,8 +94,25 @@ class CreateDeckViewController: UIViewController, SFSpeechRecognizerDelegate, AV
     
     @IBAction func registerDeck(_ sender: UIButton) {
         if let topic = lbDeck.text, sentences.count != 0 {
-            NetworkManager.shared.createDeck(themeId: themeId, topic: topic, sentences: sentences, completion: {
-                self.dismiss(animated: true, completion: nil)
+            NetworkManager.shared.createDeck(themeId: themeId, topic: topic, sentences: sentences, completion: { (error) in
+                
+                if let error = error {
+                    var message: String = ""
+                    if error.code == 1000 {
+                        message = "Session Invalid"
+                    } else if error.code == 1001 {
+                        message = "Teacher only can create topic"
+                    }
+                    let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                } else {
+                    let alert = UIAlertController(title: "Alert", message: "Successful Created!", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                            self.dismiss(animated: true, completion: nil)
+                    }))
+                    self.present(alert, animated: true, completion: nil)
+                }
             })
         } else {
             let alert = UIAlertController(title: "Alert", message: "Please input topic and sentences", preferredStyle: .alert)
@@ -103,7 +122,7 @@ class CreateDeckViewController: UIViewController, SFSpeechRecognizerDelegate, AV
     }
     
     func startRecording() {
-        fileCount = fileCount + 1
+        fileCount = Int(NSDate().timeIntervalSince1970)
         let audioFilename = getDocumentsDirectory().appendingPathComponent("recording\(fileCount).m4a")
         
         let settings = [
@@ -167,8 +186,8 @@ class CreateDeckViewController: UIViewController, SFSpeechRecognizerDelegate, AV
             
             let alert = UIAlertController(title: "Result", message: str, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
-                let audioUrl = getDocumentsDirectory().appendingPathComponent("recording\(self.fileCount).m4a")
-                let sentence = RecordSentence(sentence: str, audioUrl: audioUrl)
+                print("\(url)")
+                let sentence = RecordSentence(sentence: str, audioUrl: url)
                 self.sentences.append(sentence)
                 self.tableView.reloadData()
             }))

@@ -98,6 +98,17 @@
 		DC9D13BD1E80D171000CA9DF /* SentenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9D13BC1E80D171000CA9DF /* SentenceViewController.swift */; };
 		DC9D13BF1E80D1BB000CA9DF /* SentenceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9D13BE1E80D1BB000CA9DF /* SentenceTableViewCell.swift */; };
 		DCB4A2931E6FE50300A47F57 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB4A2921E6FE50300A47F57 /* NetworkManager.swift */; };
+		DCBA6AF31E8BBA8E00DE3E65 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBA6AF21E8BBA8E00DE3E65 /* LoginViewController.swift */; };
+		DCBA6AF61E8BBAA200DE3E65 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBA6AF51E8BBAA200DE3E65 /* RegisterViewController.swift */; };
+		DCBA6AF81E8BBD2500DE3E65 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBA6AF71E8BBD2500DE3E65 /* SplashViewController.swift */; };
+		DCBA6AFA1E8CF6D700DE3E65 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBA6AF91E8CF6D700DE3E65 /* UserDefault.swift */; };
+		DCBA6AFC1E937B2700DE3E65 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBA6AFB1E937B2700DE3E65 /* Constant.swift */; };
+		DCBA6AFE1E9382E600DE3E65 /* MyDeckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBA6AFD1E9382E600DE3E65 /* MyDeckViewController.swift */; };
+		DCBA6B001E94881900DE3E65 /* TeacherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBA6AFF1E94881900DE3E65 /* TeacherViewController.swift */; };
+		DCBA6B021E94899700DE3E65 /* TeacherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBA6B011E94899700DE3E65 /* TeacherTableViewCell.swift */; };
+		DCBA6B041E94CEED00DE3E65 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBA6B031E94CEED00DE3E65 /* User.swift */; };
+		DCBA6B061E9C6E2D00DE3E65 /* MyCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBA6B051E9C6E2D00DE3E65 /* MyCardViewController.swift */; };
+		DCBA6B081E9C750600DE3E65 /* StudentPracticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBA6B071E9C750600DE3E65 /* StudentPracticeViewController.swift */; };
 		DCED88751E5BEDC200DBAD36 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCED88741E5BEDC200DBAD36 /* SWRevealViewController.m */; };
 		DCED88771E5BEFEF00DBAD36 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCED88761E5BEFEF00DBAD36 /* MenuViewController.swift */; };
 		DCED88791E5C122500DBAD36 /* reveal-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCED88781E5C122500DBAD36 /* reveal-icon@2x.png */; };
@@ -271,6 +282,17 @@
 		DC9D13BC1E80D171000CA9DF /* SentenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentenceViewController.swift; sourceTree = "<group>"; };
 		DC9D13BE1E80D1BB000CA9DF /* SentenceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentenceTableViewCell.swift; sourceTree = "<group>"; };
 		DCB4A2921E6FE50300A47F57 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		DCBA6AF21E8BBA8E00DE3E65 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		DCBA6AF51E8BBAA200DE3E65 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		DCBA6AF71E8BBD2500DE3E65 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		DCBA6AF91E8CF6D700DE3E65 /* UserDefault.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
+		DCBA6AFB1E937B2700DE3E65 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		DCBA6AFD1E9382E600DE3E65 /* MyDeckViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyDeckViewController.swift; sourceTree = "<group>"; };
+		DCBA6AFF1E94881900DE3E65 /* TeacherViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeacherViewController.swift; sourceTree = "<group>"; };
+		DCBA6B011E94899700DE3E65 /* TeacherTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeacherTableViewCell.swift; sourceTree = "<group>"; };
+		DCBA6B031E94CEED00DE3E65 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		DCBA6B051E9C6E2D00DE3E65 /* MyCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCardViewController.swift; sourceTree = "<group>"; };
+		DCBA6B071E9C750600DE3E65 /* StudentPracticeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentPracticeViewController.swift; sourceTree = "<group>"; };
 		DCED88731E5BEDC200DBAD36 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		DCED88741E5BEDC200DBAD36 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		DCED88761E5BEFEF00DBAD36 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
@@ -603,6 +625,8 @@
 				DCED887C1E5C2E1000DBAD36 /* Deck.swift */,
 				DCED887F1E5C303A00DBAD36 /* Theme.swift */,
 				DC46366D1E82124800FD8BB9 /* RecordSentence.swift */,
+				DCBA6AF91E8CF6D700DE3E65 /* UserDefault.swift */,
+				DCBA6B031E94CEED00DE3E65 /* User.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -614,6 +638,7 @@
 				DC7F7C581E67EC14006DAAA8 /* FMDatabaseVariadic.swift */,
 				DCED88841E5D224900DBAD36 /* Utils.swift */,
 				DC065DF51E5D2ACE00C96661 /* StringExtension.swift */,
+				DCBA6AFB1E937B2700DE3E65 /* Constant.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -626,6 +651,7 @@
 				DC9D13BE1E80D1BB000CA9DF /* SentenceTableViewCell.swift */,
 				DC46366B1E81225900FD8BB9 /* CreateDeckTableViewCell.swift */,
 				DC85B0DE1E84E6E500DBC73D /* ScoreView.swift */,
+				DCBA6B011E94899700DE3E65 /* TeacherTableViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -641,6 +667,13 @@
 				DC9D13BC1E80D171000CA9DF /* SentenceViewController.swift */,
 				DC4636691E81219B00FD8BB9 /* CreateDeckViewController.swift */,
 				DC85B0E01E84F72000DBC73D /* WrongViewController.swift */,
+				DCBA6AF21E8BBA8E00DE3E65 /* LoginViewController.swift */,
+				DCBA6AF51E8BBAA200DE3E65 /* RegisterViewController.swift */,
+				DCBA6AF71E8BBD2500DE3E65 /* SplashViewController.swift */,
+				DCBA6AFD1E9382E600DE3E65 /* MyDeckViewController.swift */,
+				DCBA6AFF1E94881900DE3E65 /* TeacherViewController.swift */,
+				DCBA6B051E9C6E2D00DE3E65 /* MyCardViewController.swift */,
+				DCBA6B071E9C750600DE3E65 /* StudentPracticeViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -1002,12 +1035,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				DCED88751E5BEDC200DBAD36 /* SWRevealViewController.m in Sources */,
+				DCBA6B021E94899700DE3E65 /* TeacherTableViewCell.swift in Sources */,
 				DC2A8DFE1E6004B0007DE893 /* YYTextRunDelegate.m in Sources */,
 				DC7F7C591E67EC14006DAAA8 /* FMDatabaseAdditionsVariadic.swift in Sources */,
 				DC2A8E101E6004BB007DE893 /* NSParagraphStyle+YYText.m in Sources */,
 				DC2A8DEA1E6004A7007DE893 /* YYTextInput.m in Sources */,
 				DC7F7C5D1E67EFEA006DAAA8 /* DBManager.swift in Sources */,
 				DC2A8DED1E6004A7007DE893 /* YYTextLine.m in Sources */,
+				DCBA6AFA1E8CF6D700DE3E65 /* UserDefault.swift in Sources */,
 				DC2A8E0F1E6004BB007DE893 /* NSAttributedString+YYText.m in Sources */,
 				DCED887B1E5C259E00DBAD36 /* Card.swift in Sources */,
 				DC7F7C531E67EBC1006DAAA8 /* FMDatabaseAdditions.m in Sources */,
@@ -1019,6 +1054,7 @@
 				DC46366C1E81225900FD8BB9 /* CreateDeckTableViewCell.swift in Sources */,
 				DC85B0E11E84F72000DBC73D /* WrongViewController.swift in Sources */,
 				DC2A8DEC1E6004A7007DE893 /* YYTextLayout.m in Sources */,
+				DCBA6AFC1E937B2700DE3E65 /* Constant.swift in Sources */,
 				DC2A8DD11E60046B007DE893 /* YYTextView.m in Sources */,
 				DCED887D1E5C2E1000DBAD36 /* Deck.swift in Sources */,
 				DC2A8DEF1E6004A7007DE893 /* YYTextSelectionView.m in Sources */,
@@ -1029,15 +1065,21 @@
 				DCED88851E5D224900DBAD36 /* Utils.swift in Sources */,
 				DC85B0DF1E84E6E500DBC73D /* ScoreView.swift in Sources */,
 				DC2A8E131E6004BB007DE893 /* YYTextAsyncLayer.m in Sources */,
+				DCBA6B061E9C6E2D00DE3E65 /* MyCardViewController.swift in Sources */,
 				DC2A8DE81E6004A7007DE893 /* YYTextDebugOption.m in Sources */,
+				DCBA6B041E94CEED00DE3E65 /* User.swift in Sources */,
 				DC7F7C541E67EBC1006DAAA8 /* FMDatabasePool.m in Sources */,
 				DC2A8DE91E6004A7007DE893 /* YYTextEffectWindow.m in Sources */,
 				DCB4A2931E6FE50300A47F57 /* NetworkManager.swift in Sources */,
 				DC46366A1E81219B00FD8BB9 /* CreateDeckViewController.swift in Sources */,
 				DCED88821E5D1CBB00DBAD36 /* DeckViewController.swift in Sources */,
+				DCBA6B081E9C750600DE3E65 /* StudentPracticeViewController.swift in Sources */,
+				DCBA6AF31E8BBA8E00DE3E65 /* LoginViewController.swift in Sources */,
 				DC2A8DEB1E6004A7007DE893 /* YYTextKeyboardManager.m in Sources */,
 				DC2A8E121E6004BB007DE893 /* UIView+YYText.m in Sources */,
+				DCBA6AF61E8BBAA200DE3E65 /* RegisterViewController.swift in Sources */,
 				DC2A8DFB1E6004B0007DE893 /* YYTextAttribute.m in Sources */,
+				DCBA6AF81E8BBD2500DE3E65 /* SplashViewController.swift in Sources */,
 				DC2A8DFA1E6004B0007DE893 /* YYTextArchiver.m in Sources */,
 				DC2A8E181E603347007DE893 /* MistakeViewController.swift in Sources */,
 				DCED888C1E5D244800DBAD36 /* DeckTableViewCell.swift in Sources */,
@@ -1045,6 +1087,7 @@
 				DC2529451E52E650006F2DEC /* NSString+Japanese.m in Sources */,
 				DC2A8DC11E5EE919007DE893 /* Node.m in Sources */,
 				DC2A8DE71E6004A7007DE893 /* YYTextContainerView.m in Sources */,
+				DCBA6B001E94881900DE3E65 /* TeacherViewController.swift in Sources */,
 				DC7F7C551E67EBC1006DAAA8 /* FMDatabaseQueue.m in Sources */,
 				DC2A8E151E6004BB007DE893 /* YYTextUtilities.m in Sources */,
 				DC442B351E49920C0006C4E4 /* TextTableViewCell.swift in Sources */,
@@ -1053,6 +1096,7 @@
 				DC2A8DEE1E6004A7007DE893 /* YYTextMagnifier.m in Sources */,
 				DC2A8DD01E60046B007DE893 /* YYLabel.m in Sources */,
 				DC9D13BF1E80D1BB000CA9DF /* SentenceTableViewCell.swift in Sources */,
+				DCBA6AFE1E9382E600DE3E65 /* MyDeckViewController.swift in Sources */,
 				DC442B091E496CA40006C4E4 /* ViewController.swift in Sources */,
 				DC7F7C5A1E67EC14006DAAA8 /* FMDatabaseVariadic.swift in Sources */,
 				DC2A8DFC1E6004B0007DE893 /* YYTextParser.m in Sources */,

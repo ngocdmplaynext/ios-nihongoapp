@@ -23,6 +23,21 @@ func getDocumentsDirectory() -> URL {
     return documentsDirectory
 }
 
+func cleanDocumentsDirectory() {
+    let fileManager = FileManager.default
+    let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+    do {
+        let filePaths = try fileManager.contentsOfDirectory(atPath: path)
+        for filePath in filePaths {
+            if filePath.contains("recording") {
+                try fileManager.removeItem(atPath: path + "/" + filePath)
+            }
+        }
+    } catch {
+        print("Could not clear document folder: \(error)")
+    }
+}
+
 func arrayCrossJoin<A, B, R>(
     aArray: [A],
     bArray: [B],

@@ -17,7 +17,11 @@ class DeckViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(createDeck))
+        let isTeacher = (UserDefault.shared.getUserType() ?? student) == teacher
+        if isTeacher {
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(createDeck))
+        }
+        
         
 //        if !DBManager.shared.hasDeckData(byThemeId: themeId) {
 //            NetworkManager.shared.getInitDeckData(byThemeId: themeId, completion: { (decks, error) in
@@ -38,12 +42,14 @@ class DeckViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        NetworkManager.shared.getInitDeckData(byThemeId: themeId, completion: { (decks, error) in
+        NetworkManager.shared.getInitDeckData(byThemeId: themeId, completion: { [weak self] (decks, error) in
             if let decks = decks {
-                self.decks = decks
-                self.tableView.reloadData()
+                self?.decks = decks
+                self?.tableView.reloadData()
             } else {
-                print("can't load init deck data")
+                let alert = UIAlertController(title: "Alert", message: "Session invalid", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self?.present(alert, animated: true, completion: nil)
             }
         })
     }

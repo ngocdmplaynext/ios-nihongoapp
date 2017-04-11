@@ -13,7 +13,7 @@ import Speech
 class SentenceViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioRecorderDelegate {
     var deckId: Int = 0
     var cards: [Card] = [Card]()
-    var currentCard: Card = Card()
+    var currentIndexPath = IndexPath()
     var resultAttributedString = NSMutableAttributedString()
     
     var enableSpeech: Bool = false
@@ -108,7 +108,7 @@ class SentenceViewController: UIViewController, SFSpeechRecognizerDelegate, AVAu
         let cell = btn.superview?.superview as? UITableViewCell
         if let cell = cell {
             if let indexPath = self.tableView.indexPath(for: cell) {
-                self.currentCard = cards[indexPath.row]
+                self.currentIndexPath = indexPath
             }
         }
         startRecording()
@@ -182,7 +182,8 @@ class SentenceViewController: UIViewController, SFSpeechRecognizerDelegate, AVAu
             var hasMistake: Bool = false
             
             let symbols = ["！","、","。","？"]
-            let textStr = self.currentCard.name
+            let currentCard = self.cards[self.currentIndexPath.row]
+            let textStr = currentCard.name
             
             let attributedString = NSMutableAttributedString(string:textStr)
             attributedString.addAttribute(NSForegroundColorAttributeName, value: UIColor.red , range: NSRange(location: 0, length: textStr.characters.count))
@@ -325,12 +326,22 @@ class SentenceViewController: UIViewController, SFSpeechRecognizerDelegate, AVAu
                 }
             })
             
-            let scoreView = ScoreView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height))
-            scoreView.btnMistake.addTarget(self, action: #selector(self.wrongPlaceSentence(_:)), for: .touchUpInside)
-            scoreView.btnMistake.isHidden = !hasMistake
-            scoreView.lbResult.text = "\(score)"
-            self.view.addSubview(scoreView)
+            let bestScore = currentCard.bestScore > Int(score) ? currentCard.bestScore : Int(score)
+            let newCard = Card(name: currentCard.name, cardId: currentCard.cardId, deckId: currentCard.deckId, audioUrl: currentCard.audioUrl, bestScore: bestScore)
+            self.cards[self.currentIndexPath.row] = newCard
+            self.tableView.reloadRows(at: [self.currentIndexPath], with: .automatic)
             
+            NetworkManager.shared.practices(card: newCard, completion: { (error) in
+                if let error = error {
+                    print ("\(error.localizedDescription)")
+                } else {
+                    let scoreView = ScoreView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height))
+                    scoreView.btnMistake.addTarget(self, action: #selector(self.wrongPlaceSentence(_:)), for: .touchUpInside)
+                    scoreView.btnMistake.isHidden = !hasMistake
+                    scoreView.lbResult.text = "\(Int(score))"
+                    self.view.addSubview(scoreView)
+                }
+            })
           //  self.lbResult.attributedText = resultAttributedString
         }
         
@@ -376,6 +387,7 @@ extension SentenceViewController: UITableViewDataSource {
         let card = cards[indexPath.row]
         cell.lbTitle.text = card.name
         cell.lbRomaji.text = card.romaji
+        cell.lbScore.text = "\(card.bestScore)"
         
         cell.btnRecord.addTarget(self, action: #selector(record(_:)), for: .touchDown)
         cell.btnRecord.addTarget(self, action: #selector(stopRecord), for: .touchUpInside)
