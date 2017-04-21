@@ -15,11 +15,13 @@ class CreateDeckViewController: UIViewController, SFSpeechRecognizerDelegate, AV
     var themeId: Int = 0
     var sentences: [RecordSentence] = [RecordSentence]()
     var fileCount: Int = 0
+    var editingIndexPath: IndexPath?
     
     @IBOutlet weak var btnEdit: UIButton!
     @IBOutlet weak var lbDeck: UITextField!
     @IBOutlet weak var btnRecord: UIButton!
     @IBOutlet weak var tableView: UITableView!
+    weak var tflNewSentence: UITextField!
     
     var recordingSession: AVAudioSession!
     var audioRecorder: AVAudioRecorder!
@@ -52,7 +54,7 @@ class CreateDeckViewController: UIViewController, SFSpeechRecognizerDelegate, AV
         
         prepareRecognizer(locale: defaultLocale)
         
-        cleanDocumentsDirectory()
+        cleanDocumentsDirectory(hasPrefix: "recording")
         
         // Do any additional setup after loading the view.
     }
@@ -224,6 +226,32 @@ class CreateDeckViewController: UIViewController, SFSpeechRecognizerDelegate, AV
         self.dismiss(animated: true, completion: nil)
     }
     
+    func editSentence(_ btn: UIButton) {
+        let cell = btn.superview?.superview as! UITableViewCell
+        self.editingIndexPath = self.tableView.indexPath(for: cell)
+        let alert = UIAlertController(title: "Edit Sentence", message: "", preferredStyle: .alert)
+        alert.addTextField(configurationHandler: addTextField)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: wordEntered))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func wordEntered(alert: UIAlertAction!){
+        if let indexPath = self.editingIndexPath, let cell = self.tableView.cellForRow(at: indexPath) as?  CreateDeckTableViewCell, let text = self.tflNewSentence.text {
+            cell.lbTitle.text = text
+            let sentence = sentences[indexPath.row]
+            let newsentence = RecordSentence(sentence: text, audioUrl: sentence.audioUrl)
+            sentences[indexPath.row] = newsentence
+        }
+    }
+    
+    func addTextField(textField: UITextField!){
+        if let indexPath = self.editingIndexPath {
+            textField.text = sentences[indexPath.row].sentence
+        }
+        self.tflNewSentence = textField
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -248,6 +276,7 @@ extension CreateDeckViewController: UITableViewDataSource {
         let cell: CreateDeckTableViewCell = tableView.dequeueReusableCell(withIdentifier: CreateDeckTableViewCell.cellIdentifier, for: indexPath) as! CreateDeckTableViewCell
         cell.selectionStyle = .none
         cell.lbTitle?.text = sentences[indexPath.row].sentence
+        cell.btnEdit.addTarget(self, action: #selector(editSentence(_:)), for: .touchUpInside)
         return cell
     }
     

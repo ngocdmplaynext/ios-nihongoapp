@@ -7,6 +7,8 @@ target 'SoundDemo' do
 
   # Pods for SoundDemo
   pod 'Alamofire', '~> 4.4'
+  pod 'PlayListPlayer'
+  pod 'SVProgressHUD'
 
   target 'SoundDemoTests' do
     inherit! :search_paths

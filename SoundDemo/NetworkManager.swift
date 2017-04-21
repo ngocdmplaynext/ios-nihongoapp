@@ -19,6 +19,7 @@ let myDeckPath = "mydecks"
 let teachersPath = "teachers"
 let bookmarkPath = "users/%d/bookmarks"
 let practicePath = "cards/%d/practices"
+let cardAudioUrlPath = "cards/%d/audio_url"
 
 class NetworkManager: NSObject {
     static let shared = NetworkManager()
@@ -117,8 +118,8 @@ class NetworkManager: NSObject {
                         } else if let dicArr = dicResult["result"] as? [[String: AnyObject]] {
                             var cards = [Card]()
                             for cardDic in dicArr {
-                                if let name = cardDic["name"] as? String, let cardId = cardDic["id"] as? Int, let deckId = cardDic["deck_id"] as? Int, let audioUrl = cardDic["audio_url"] as? String, let bestScore = cardDic["best_score"] as? Int {
-                                    let card = Card(name: name, cardId: cardId, deckId: deckId, audioUrl: audioUrl, bestScore: bestScore)
+                                if let name = cardDic["name"] as? String, let cardId = cardDic["id"] as? Int, let deckId = cardDic["deck_id"] as? Int, let bestScore = cardDic["best_score"] as? Int {
+                                    let card = Card(name: name, cardId: cardId, deckId: deckId, bestScore: bestScore)
                                     cards.append(card)
                                 }
                             }
@@ -233,16 +234,47 @@ class NetworkManager: NSObject {
         }
     }
     
-    func downLoadFile(card: Card, completion: ((_ filePath: URL?) -> Void)? = nil) {
-        let destination: DownloadRequest.DownloadFileDestination = { _, _ in
-            var documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-            documentsURL.appendPathComponent("card\(card.cardId).m4a")
-            return (documentsURL, [.removePreviousFile])
+    func downLoadCardAudio(card: Card, completion: ((_ filePath: URL?) -> Void)? = nil) {
+        let path: String = String(format: urlWithPath(path: cardAudioUrlPath), card.cardId)
+        guard let url = try? URLRequest(url: path, method: .get, headers: nil) else {
+            return
         }
         
-        Alamofire.download(card.audioUrl, to: destination).response { response in
-            print("\(response.error)")
-            completion?(response.destinationURL)
+        Alamofire.request(url)
+            .responseJSON { response in
+                switch response.result {
+                case .success(let value):
+                    if let dicResult = value as? [String: AnyObject], let audioUrl = dicResult["result"] as? String {
+                        let destination: DownloadRequest.DownloadFileDestination = { _, _ in
+                            let documentsURL = filePath(withName: "card\(card.cardId).m4a")
+                            return (documentsURL, [.removePreviousFile])
+                        }
+                        
+                        Alamofire.download(audioUrl, to: destination).response { response in
+                            completion?(response.destinationURL)
+                        }
+                    }
+                case .failure(_):
+                    completion?(nil)
+                }
+        }
+    }
+    
+    func downloadListCardAudioUrl(cards: [Card], completion: ((_ error: NSError?) -> Void)? = nil) {
+        let downloadGroup = DispatchGroup()
+        var error: NSError?
+        for card in cards {
+            downloadGroup.enter()
+            downLoadCardAudio(card: card, completion: { (path) in
+                if path == nil {
+                    error = NSError(domain: "sounddemo", code: -1, userInfo: nil)
+                }
+                downloadGroup.leave()
+            })
+        }
+        
+        downloadGroup.notify(queue: DispatchQueue.main) {
+            completion?(error)
         }
     }
     

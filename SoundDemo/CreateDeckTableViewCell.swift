@@ -13,6 +13,7 @@ class CreateDeckTableViewCell: UITableViewCell {
     
     @IBOutlet weak var lbTitle: UILabel!
     @IBOutlet weak var btnDelete: UIButton!
+    @IBOutlet weak var btnEdit: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

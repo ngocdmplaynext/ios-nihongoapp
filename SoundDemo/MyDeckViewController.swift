@@ -29,6 +29,16 @@ class MyDeckViewController: UIViewController {
             if let decks = decks {
                 self?.decks = decks
                 self?.tableView.reloadData()
+            } else if let error = error {
+                var message = ""
+                if error.code == 1000 {
+                    message = "Session invalid"
+                } else {
+                    message = error.localizedDescription
+                }
+                let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self?.present(alert, animated: true, completion: nil)
             }
         }
         
@@ -42,15 +52,7 @@ class MyDeckViewController: UIViewController {
 }
 
 extension MyDeckViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let deck = self.decks[indexPath.row]
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if let controller = storyboard.instantiateViewController(withIdentifier: "kMyCardViewController") as? MyCardViewController {
-            controller.deckId = deck.deckId
-            self.navigationController?.pushViewController(controller, animated: true)
-        }
-        
-    }
+    
 }
 
 extension MyDeckViewController: UITableViewDataSource {

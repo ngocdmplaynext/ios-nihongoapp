@@ -13,14 +13,12 @@ struct Card {
     var romaji: String
     var cardId: Int
     var deckId: Int
-    var audioUrl: String
     var bestScore: Int
-    init(name: String, cardId: Int, deckId: Int, audioUrl: String, bestScore: Int) {
+    init(name: String, cardId: Int, deckId: Int, bestScore: Int) {
         self.name = name
         self.romaji = MeCabUtil.shared().stringJapanese(toRomaji: name)
         self.cardId = cardId
         self.deckId = deckId
-        self.audioUrl = audioUrl
         self.bestScore = bestScore
     }
     
@@ -29,7 +27,6 @@ struct Card {
         self.romaji = ""
         self.cardId = 0
         self.deckId = 0
-        self.audioUrl = ""
         self.bestScore = 0
     }
 }

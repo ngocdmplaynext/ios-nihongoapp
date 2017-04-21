@@ -109,7 +109,7 @@ class DBManager: NSObject {
         }
         
         do {
-            try database.executeUpdate("insert into card (name, id, audio_url, deck_id, best_score) values (?,?,?,?,?)", values: [card.name, card.cardId, card.audioUrl, card.deckId, card.bestScore])
+            try database.executeUpdate("insert into card (name, id, audio_url, deck_id, best_score) values (?,?,?,?,?)", values: [card.name, card.cardId, "", card.deckId, card.bestScore])
         } catch {
             print("failed: \(error.localizedDescription)")
         }
@@ -295,7 +295,7 @@ class DBManager: NSObject {
                 let audioUrl: String = rs.string(forColumnIndex: 3) ?? ""
                 let bestScore: Int = Int(rs.int(forColumnIndex: 4))
                 
-                let card = Card(name: name, cardId: cardId, deckId: deckId, audioUrl: audioUrl, bestScore: bestScore)
+                let card = Card(name: name, cardId: cardId, deckId: deckId, bestScore: bestScore)
                 cards.append(card)
             }
         }

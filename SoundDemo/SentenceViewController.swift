@@ -9,6 +9,8 @@
 import AVFoundation
 import UIKit
 import Speech
+import PlayListPlayer
+import SVProgressHUD
 
 class SentenceViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioRecorderDelegate {
     var deckId: Int = 0
@@ -27,6 +29,7 @@ class SentenceViewController: UIViewController, SFSpeechRecognizerDelegate, AVAu
     private var recognitionTask: SFSpeechRecognitionTask!
     private let defaultLocale = Locale(identifier: "ja-JA")
 
+    @IBOutlet weak var btnPlayAll: UIButton!
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +54,24 @@ class SentenceViewController: UIViewController, SFSpeechRecognizerDelegate, AVAu
             if let cards = cards {
                 self.cards = cards
                 self.tableView.reloadData()
+                
+                var isFileExist: Bool = true
+                
+                for card in cards {
+                    isFileExist = isFileExist && fileExist(atPath: filePath(withName: "card\(card.cardId).m4a").path)
+                }
+                
+                if !isFileExist {
+                    SVProgressHUD.show()
+                    NetworkManager.shared.downloadListCardAudioUrl(cards: cards, completion: { (error) in
+                        if error != nil {
+                            print ("download error")
+                        } else {
+                            print ("download success")
+                        }
+                        SVProgressHUD.dismiss()
+                    })
+                }
             } else {
                 print("can't load init card data")
             }
@@ -327,7 +348,7 @@ class SentenceViewController: UIViewController, SFSpeechRecognizerDelegate, AVAu
             })
             
             let bestScore = currentCard.bestScore > Int(score) ? currentCard.bestScore : Int(score)
-            let newCard = Card(name: currentCard.name, cardId: currentCard.cardId, deckId: currentCard.deckId, audioUrl: currentCard.audioUrl, bestScore: bestScore)
+            let newCard = Card(name: currentCard.name, cardId: currentCard.cardId, deckId: currentCard.deckId, bestScore: bestScore)
             self.cards[self.currentIndexPath.row] = newCard
             self.tableView.reloadRows(at: [self.currentIndexPath], with: .automatic)
             
@@ -345,6 +366,34 @@ class SentenceViewController: UIViewController, SFSpeechRecognizerDelegate, AVAu
           //  self.lbResult.attributedText = resultAttributedString
         }
         
+    }
+    
+    @IBAction func playAllAudio(_ sender: UIButton) {
+        if PlayListPlayer.sharedInstance.isPlaying() {
+            PlayListPlayer.sharedInstance.pause()
+            sender.setTitle("Play", for: .normal)
+        } else {
+            sender.setTitle("Stop", for: .normal)
+            var playlist: [URL] = [URL]()
+            for card in cards {
+                playlist.append(filePath(withName: "card\(card.cardId).m4a"))
+            }
+            do {
+                try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+                
+                try AVAudioSession.sharedInstance().setActive(true)
+                
+                PlayListPlayer.sharedInstance.set(playList: playlist)
+                PlayListPlayer.sharedInstance.playMode = .NoRepeat
+                PlayListPlayer.sharedInstance.play()
+                PlayListPlayer.sharedInstance.didFinishPlayingPlayList = {
+                    PlayListPlayer.sharedInstance.pause()
+                    sender.setTitle("Play", for: .normal)
+                }
+            } catch {
+                print("get an error:\(error.localizedDescription)")
+            }
+        }
     }
     
     func wrongPlaceSentence(_ btn: UIButton) {
@@ -401,20 +450,17 @@ extension SentenceViewController: UITableViewDelegate {
         sampleSound?.stop()
         sampleSound = nil
         
-        NetworkManager.shared.downLoadFile(card: card) { (url) in
-            if let url = url {
-                do {
-                    try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
-                    
-                    try AVAudioSession.sharedInstance().setActive(true)
-                    
-                    let sound = try AVAudioPlayer(contentsOf: url)
-                    self.sampleSound = sound
-                    sound.play()
-                } catch {
-                    print("get an error:\(error.localizedDescription)")
-                }
-            }
+        let pathUrl = filePath(withName: "card\(card.cardId).m4a")
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+            
+            try AVAudioSession.sharedInstance().setActive(true)
+            
+            let sound = try AVAudioPlayer(contentsOf: pathUrl)
+            self.sampleSound = sound
+            sound.play()
+        } catch {
+            print("get an error:\(error.localizedDescription)")
         }
     }
 }

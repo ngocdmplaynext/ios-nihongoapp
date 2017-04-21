@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>PlayListPlayer.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-SoundDemo.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -24,10 +29,25 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SVProgressHUD.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>2A67C4E3BA6544910D8846ABDC7840B5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>2D2C5D2D56EC49F57D0BD23C5AA4159B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6F86C392AF775BCCA633556C0E482AF0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -42,7 +62,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>EADCA2EADE72AE3C5797FC906EAA89F7</key>
+		<key>C608AA4EB65FCA81298B8EA418E85FCF</key>
 		<dict>
 			<key>primary</key>
 			<true/>

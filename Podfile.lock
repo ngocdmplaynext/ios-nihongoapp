@@ -1,12 +1,18 @@
 PODS:
   - Alamofire (4.4.0)
+  - PlayListPlayer (1.0.0)
+  - SVProgressHUD (2.1.2)
 
 DEPENDENCIES:
   - Alamofire (~> 4.4)
+  - PlayListPlayer
+  - SVProgressHUD
 
 SPEC CHECKSUMS:
   Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
+  PlayListPlayer: 53471a4f1dd2e15b0c2cd7488c9c83eb00411a9b
+  SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
 
-PODFILE CHECKSUM: af2116127129bcd1cb314f01874a7069855d282e
+PODFILE CHECKSUM: 8304136cd6d3f96571525a8916ce80675d930ea7
 
 COCOAPODS: 1.2.0

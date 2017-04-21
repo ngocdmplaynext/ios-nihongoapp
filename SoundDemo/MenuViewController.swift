@@ -63,6 +63,7 @@ extension MenuViewController: UITableViewDelegate {
             let alert = UIAlertController(title: "Logout", message: "ログアウトしてもよろしいですか", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "はい", style: .default, handler: { (action) in
                 UserDefault.shared.resetToken()
+                cleanDocumentsDirectory(hasPrefix: "card")
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 if let controller = storyboard.instantiateViewController(withIdentifier: "kLoginViewController") as? LoginViewController {
                     let nav = UINavigationController(rootViewController: controller)
