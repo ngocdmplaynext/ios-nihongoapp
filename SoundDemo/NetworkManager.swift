@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 
-let baseApi = "https://japaneselearning.herokuapp.com/api/v1/"
+let baseApi = "http://172.16.96.41:3000/api/v1/"
 let themePath = "themes"
 let deckPath = "themes/%d/decks"
 let cardPath = "decks/%d/cards"
@@ -73,13 +73,13 @@ class NetworkManager: NSObject {
         
         Alamofire.request(url)
             .responseJSON { response in
-                switch response.result {
-                case .success(let value):
-                    if let dicResult = value as? [String: AnyObject], let code = dicResult["code"] as? Int, let message = dicResult["message"] as? String {
-                        if code != 0 {
-                            let error = NSError(domain: "sounddemo", code: code, userInfo: ["msg" : message])
-                            completion?(nil, error)
-                        } else if let dicArr = dicResult["result"] as? [[String: AnyObject]] {
+                if let code = response.response?.statusCode, code != HTTP_OK {
+                    let error = NSError(domain: "sounddemo", code: code, userInfo: nil)
+                    completion?(nil, error)
+                } else {
+                    switch response.result {
+                    case .success(let value):
+                        if let dicArr = value as? [[String: AnyObject]] {
                             var decks = [Deck]()
                             for dic in dicArr {
                                 if let name = dic["name"] as? String, let deckId = dic["id"] as? Int, let themeId = dic["theme_id"] as? Int {
@@ -89,9 +89,9 @@ class NetworkManager: NSObject {
                             }
                             completion?(decks, nil)
                         }
+                    case .failure(let error):
+                        completion?(nil, error as NSError?)
                     }
-                case .failure(let error):
-                    completion?(nil, error as NSError?)
                 }
         }        
     }
@@ -109,13 +109,13 @@ class NetworkManager: NSObject {
         
         Alamofire.request(url)
             .responseJSON { response in
-                switch response.result {
-                case .success(let value):
-                    if let dicResult = value as? [String: AnyObject], let code = dicResult["code"] as? Int, let message = dicResult["message"] as? String {
-                        if code != 0 {
-                            let error = NSError(domain: "sounddemo", code: code, userInfo: ["msg" : message])
-                            completion?(nil, error)
-                        } else if let dicArr = dicResult["result"] as? [[String: AnyObject]] {
+                if let code = response.response?.statusCode, code != HTTP_OK {
+                    let error = NSError(domain: "sounddemo", code: code, userInfo: nil)
+                    completion?(nil, error)
+                } else {
+                    switch response.result {
+                    case .success(let value):
+                        if let dicArr = value as? [[String: AnyObject]] {
                             var cards = [Card]()
                             for cardDic in dicArr {
                                 if let name = cardDic["name"] as? String, let cardId = cardDic["id"] as? Int, let deckId = cardDic["deck_id"] as? Int, let bestScore = cardDic["best_score"] as? Int {
@@ -125,10 +125,11 @@ class NetworkManager: NSObject {
                             }
                             completion?(cards, nil)
                         }
+                        
+                    case .failure(let error):
+                        print(error)
+                        completion?(nil, error as NSError?)
                     }
-                case .failure(let error):
-                    print(error)
-                    completion?(nil, error as NSError?)
                 }
         }
         
@@ -244,7 +245,7 @@ class NetworkManager: NSObject {
             .responseJSON { response in
                 switch response.result {
                 case .success(let value):
-                    if let dicResult = value as? [String: AnyObject], let audioUrl = dicResult["result"] as? String {
+                    if let audioUrl = value as? String {
                         let destination: DownloadRequest.DownloadFileDestination = { _, _ in
                             let documentsURL = filePath(withName: "card\(card.cardId).m4a")
                             return (documentsURL, [.removePreviousFile])
@@ -284,19 +285,20 @@ class NetworkManager: NSObject {
         let parameters = ["email": email, "password": password]
         
         Alamofire.request(path, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: [:]).responseJSON { response in
-            switch response.result {
-            case .success(let value):
-                if let responseDic = value as? [String: AnyObject], let code = responseDic["code"] as? Int , let message = responseDic["message"] as? String {
-                    if code != 0 {
-                        let error = NSError(domain: "sounddemo", code: code, userInfo: ["msg" : message])
-                        completion?(nil, nil, nil, error)
-                    } else if let result = responseDic["result"] as? [String: AnyObject], let authToken =  result["auth_token"] as? String, let name = result["name"] as? String, let type = result["type"] as? Int {
+            if let code = response.response?.statusCode, code != HTTP_OK {
+                let error = NSError(domain: "sounddemo", code: code, userInfo: nil)
+                completion?(nil, nil, nil, error)
+            } else {
+                switch response.result {
+                case .success(let value):
+                    if let result = value as? [String: AnyObject], let authToken =  result["auth_token"] as? String, let name = result["name"] as? String, let type = result["type"] as? Int {
                         completion?(authToken, name, type, nil)
                     }
+                case .failure(let error):
+                    completion?(nil, nil, nil, error as NSError?)
                 }
-            case .failure(let error):
-                completion?(nil, nil, nil, error as NSError?)
             }
+            
 
         }
     }
@@ -307,20 +309,12 @@ class NetworkManager: NSObject {
         let parameters = ["name": name, "email": email, "password": password, "password_confirmation": passwordConfirm]
         
         Alamofire.request(path, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: [:]).responseJSON { response in
-            switch response.result {
-            case .success(let value):
-                if let responseDic = value as? [String: AnyObject], let code = responseDic["code"] as? Int , let message = responseDic["message"] as? String {
-                    if code != 0 {
-                        let error = NSError(domain: "sounddemo", code: code, userInfo: ["msg" : message])
-                        completion?(error)
-                    } else {
-                        completion?(nil)
-                    }
-                }
-            case .failure(let error):
-                completion?(error as NSError?)
+            if let code = response.response?.statusCode, code != HTTP_OK {
+                let error = NSError(domain: "sounddemo", code: code, userInfo: nil)
+                completion?(error)
+            } else {
+                completion?(nil)
             }
-            
         }
     }
     
@@ -337,26 +331,27 @@ class NetworkManager: NSObject {
         
         Alamofire.request(url)
             .responseJSON { response in
-                switch response.result {
-                case .success(let value):
-                    if let dicResult = value as? [String: AnyObject], let code = dicResult["code"] as? Int, let message = dicResult["message"] as? String {
-                        if code != 0 {
-                            let error = NSError(domain: "sounddemo", code: code, userInfo: ["msg" : message])
-                            completion?(nil, error)
-                        } else if let dicArr = dicResult["result"] as? [[String: AnyObject]] {
+                if let code = response.response?.statusCode, code != HTTP_OK {
+                    let error = NSError(domain: "sounddemo", code: code, userInfo: nil)
+                    completion?(nil, error)
+                } else {
+                    switch response.result {
+                    case .success(let value):
+                        if let dicArr = value as? [[String: AnyObject]] {
                             var users = [User]()
                             for dic in dicArr {
                                 if let userId = dic["user_id"] as? Int, let name = dic["name"] as?
-                                String, let bookmarked = dic["bookmarked"] as? Bool {
+                                    String, let bookmarked = dic["bookmarked"] as? Bool {
                                     let user = User(userId: userId, name: name, bookmark: bookmarked)
                                     users.append(user)
                                 }
                             }
                             completion?(users, nil)
                         }
+
+                    case .failure(let error):
+                        completion?(nil, error as NSError?)
                     }
-                case .failure(let error):
-                    completion?(nil, error as NSError?)
                 }
         }
     }
@@ -374,18 +369,11 @@ class NetworkManager: NSObject {
         
         Alamofire.request(url)
             .responseJSON { response in
-                switch response.result {
-                case .success(let value):
-                    if let dicResult = value as? [String: AnyObject], let code = dicResult["code"] as? Int, let message = dicResult["message"] as? String {
-                        if code != 0 {
-                            let error = NSError(domain: "sounddemo", code: code, userInfo: ["msg" : message])
-                            completion?(error)
-                        } else {
-                            completion?(nil)
-                        }
-                    }
-                case .failure(let error):
-                    completion?(error as NSError?)
+                if let code = response.response?.statusCode, code != HTTP_OK {
+                    let error = NSError(domain: "sounddemo", code: code, userInfo: nil)
+                    completion?(error)
+                } else {
+                    completion?(nil)
                 }
         }
 
@@ -404,18 +392,11 @@ class NetworkManager: NSObject {
         
         Alamofire.request(url)
             .responseJSON { response in
-                switch response.result {
-                case .success(let value):
-                    if let dicResult = value as? [String: AnyObject], let code = dicResult["code"] as? Int, let message = dicResult["message"] as? String {
-                        if code != 0 {
-                            let error = NSError(domain: "sounddemo", code: code, userInfo: ["msg" : message])
-                            completion?(error)
-                        } else {
-                            completion?(nil)
-                        }
-                    }
-                case .failure(let error):
-                    completion?(error as NSError?)
+                if let code = response.response?.statusCode, code != HTTP_OK {
+                    let error = NSError(domain: "sounddemo", code: code, userInfo: nil)
+                    completion?(error)
+                } else {
+                    completion?(nil)
                 }
         }
         

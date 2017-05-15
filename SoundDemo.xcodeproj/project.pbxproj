@@ -95,6 +95,7 @@
 		DC7F7C611E67FA69006DAAA8 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = DC7F7C601E67FA69006DAAA8 /* libsqlite3.0.tbd */; };
 		DC85B0DF1E84E6E500DBC73D /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC85B0DE1E84E6E500DBC73D /* ScoreView.swift */; };
 		DC85B0E11E84F72000DBC73D /* WrongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC85B0E01E84F72000DBC73D /* WrongViewController.swift */; };
+		DC932B791EC985FE00512AC3 /* NetworkCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC932B781EC985FE00512AC3 /* NetworkCode.swift */; };
 		DC9D13BD1E80D171000CA9DF /* SentenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9D13BC1E80D171000CA9DF /* SentenceViewController.swift */; };
 		DC9D13BF1E80D1BB000CA9DF /* SentenceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9D13BE1E80D1BB000CA9DF /* SentenceTableViewCell.swift */; };
 		DCB4A2931E6FE50300A47F57 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB4A2921E6FE50300A47F57 /* NetworkManager.swift */; };
@@ -279,6 +280,7 @@
 		DC7F7C601E67FA69006DAAA8 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		DC85B0DE1E84E6E500DBC73D /* ScoreView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreView.swift; sourceTree = "<group>"; };
 		DC85B0E01E84F72000DBC73D /* WrongViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WrongViewController.swift; sourceTree = "<group>"; };
+		DC932B781EC985FE00512AC3 /* NetworkCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkCode.swift; sourceTree = "<group>"; };
 		DC9D13BC1E80D171000CA9DF /* SentenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentenceViewController.swift; sourceTree = "<group>"; };
 		DC9D13BE1E80D1BB000CA9DF /* SentenceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentenceTableViewCell.swift; sourceTree = "<group>"; };
 		DCB4A2921E6FE50300A47F57 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -639,6 +641,7 @@
 				DCED88841E5D224900DBAD36 /* Utils.swift */,
 				DC065DF51E5D2ACE00C96661 /* StringExtension.swift */,
 				DCBA6AFB1E937B2700DE3E65 /* Constant.swift */,
+				DC932B781EC985FE00512AC3 /* NetworkCode.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -781,7 +784,7 @@
 				TargetAttributes = {
 					DC442B021E496CA40006C4E4 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = NCSVQDLN7H;
+						DevelopmentTeam = 286UGVXVN8;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
@@ -1050,6 +1053,7 @@
 				DC46366E1E82124800FD8BB9 /* RecordSentence.swift in Sources */,
 				DC7F7C521E67EBC1006DAAA8 /* FMDatabase.m in Sources */,
 				DC7F7C561E67EBC1006DAAA8 /* FMResultSet.m in Sources */,
+				DC932B791EC985FE00512AC3 /* NetworkCode.swift in Sources */,
 				DC2A8DFD1E6004B0007DE893 /* YYTextRubyAnnotation.m in Sources */,
 				DC46366C1E81225900FD8BB9 /* CreateDeckTableViewCell.swift in Sources */,
 				DC85B0E11E84F72000DBC73D /* WrongViewController.swift in Sources */,
@@ -1256,12 +1260,12 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = NCSVQDLN7H;
+				DEVELOPMENT_TEAM = 286UGVXVN8;
 				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/mecab/mecab/Classes\"";
 				INFOPLIST_FILE = SoundDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ngoc.test000;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ngoc.test001;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SoundDemo/SoundDemo-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1276,12 +1280,12 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = NCSVQDLN7H;
+				DEVELOPMENT_TEAM = 286UGVXVN8;
 				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/mecab/mecab/Classes\"";
 				INFOPLIST_FILE = SoundDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ngoc.test000;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ngoc.test001;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SoundDemo/SoundDemo-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;

@@ -25,7 +25,7 @@ class LoginViewController: UIViewController {
             if let error = error {
                 var message: String = ""
                 if error.code == 422 { // invalid email or password
-                    message = "Invalid email"
+                    message = "Invalid email or password"
                 } else if error.code == 423 { //account is not active
                     message = "This account is being checked. Please wait"
                 } else {
