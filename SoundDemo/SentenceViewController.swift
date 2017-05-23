@@ -185,6 +185,9 @@ class SentenceViewController: UIViewController, SFSpeechRecognizerDelegate, AVAu
         
         if !speechRecognizer.isAvailable {
             // The recognizer is not available right now
+            let alert = UIAlertController(title: "Alert", message: "Please turn on siri", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
             return
         }
         
@@ -193,6 +196,7 @@ class SentenceViewController: UIViewController, SFSpeechRecognizerDelegate, AVAu
         speechRecognizer.recognitionTask(with: request) { (result, error) in
             guard let result = result else {
                 // Recognition failed, so check error for details and handle it
+                print("\(error?.localizedDescription)")
                 return
             }
             

@@ -176,18 +176,11 @@ class NetworkManager: NSObject {
                 
                 upload.responseJSON { response in
                     //print response.result
-                    switch response.result {
-                    case .success(let value):
-                        if let dic = value as? [String: AnyObject], let code = dic["code"] as? Int, let message = dic["message"] as? String {
-                            if code != 0 {
-                                let error = NSError(domain: "sounddemo", code: code, userInfo: ["msg" : message])
-                                completion?(error)
-                            } else {
-                                completion?(nil)
-                            }
-                        }
-                    case .failure(let error):
-                        completion?(error as NSError?)
+                    if let code = response.response?.statusCode, code != HTTP_OK {
+                        let error = NSError(domain: "sounddemo", code: code, userInfo: nil)
+                        completion?(error)
+                    } else {
+                        completion?(nil)
                     }
                 }
                 
@@ -212,13 +205,13 @@ class NetworkManager: NSObject {
         
         Alamofire.request(url)
             .responseJSON { response in
-                switch response.result {
-                case .success(let value):
-                    if let dicResult = value as? [String: AnyObject], let code = dicResult["code"] as? Int, let message = dicResult["message"] as? String {
-                        if code != 0 {
-                            let error = NSError(domain: "sounddemo", code: code, userInfo: ["msg" : message])
-                            completion?(nil, error)
-                        } else if let dicArr = dicResult["result"] as? [[String: AnyObject]] {
+                if let code = response.response?.statusCode, code != HTTP_OK {
+                    let error = NSError(domain: "sounddemo", code: code, userInfo: nil)
+                    completion?(nil, error)
+                } else {
+                    switch response.result {
+                    case .success(let value):
+                        if let dicArr = value as? [[String: AnyObject]] {
                             var decks = [Deck]()
                             for dic in dicArr {
                                 if let name = dic["name"] as? String, let deckId = dic["id"] as? Int, let themeId = dic["theme_id"] as? Int {
@@ -228,9 +221,9 @@ class NetworkManager: NSObject {
                             }
                             completion?(decks, nil)
                         }
+                    case .failure(let error):
+                        completion?(nil, error as NSError?)
                     }
-                case .failure(let error):
-                    completion?(nil, error as NSError?)
                 }
         }
     }
@@ -245,7 +238,7 @@ class NetworkManager: NSObject {
             .responseJSON { response in
                 switch response.result {
                 case .success(let value):
-                    if let audioUrl = value as? String {
+                    if let dic = value as? [String: String], let audioUrl = dic["audio_url"] {
                         let destination: DownloadRequest.DownloadFileDestination = { _, _ in
                             let documentsURL = filePath(withName: "card\(card.cardId).m4a")
                             return (documentsURL, [.removePreviousFile])
@@ -412,19 +405,12 @@ class NetworkManager: NSObject {
         let parameters = ["best_score": card.bestScore]
         
         Alamofire.request(path, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON { response in
-                switch response.result {
-                case .success(let value):
-                    if let dicResult = value as? [String: AnyObject], let code = dicResult["code"] as? Int, let message = dicResult["message"] as? String {
-                        if code != 0 {
-                            let error = NSError(domain: "sounddemo", code: code, userInfo: ["msg" : message])
-                            completion?(error)
-                        } else {
-                            completion?(nil)
-                        }
-                    }
-                case .failure(let error):
-                    completion?(error as NSError?)
-                }
+            if let code = response.response?.statusCode, code != HTTP_OK {
+                let error = NSError(domain: "sounddemo", code: code, userInfo: nil)
+                completion?(error)
+            } else {
+                completion?(nil)
+            }
         }
         
     }
