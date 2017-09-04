@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 
-let baseApi = "http://172.16.96.41:3000/api/v1/"
+let baseApi = "http://172.16.96.61:3000/api/v1/"
 let themePath = "themes"
 let deckPath = "themes/%d/decks"
 let cardPath = "decks/%d/cards"
