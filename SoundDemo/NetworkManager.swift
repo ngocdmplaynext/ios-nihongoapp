@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 
-let baseApi = "http://172.16.96.61:3000/api/v1/"
+let baseApi = "http://172.16.96.20:3000/api/v1/"
 let themePath = "themes"
 let deckPath = "themes/%d/decks"
 let cardPath = "decks/%d/cards"
@@ -230,27 +230,13 @@ class NetworkManager: NSObject {
     
     func downLoadCardAudio(card: Card, completion: ((_ filePath: URL?) -> Void)? = nil) {
         let path: String = String(format: urlWithPath(path: cardAudioUrlPath), card.cardId)
-        guard let url = try? URLRequest(url: path, method: .get, headers: nil) else {
-            return
+        let destination: DownloadRequest.DownloadFileDestination = { _, _ in
+            let documentsURL = filePath(withName: "card\(card.cardId).m4a")
+            return (documentsURL, [.removePreviousFile])
         }
         
-        Alamofire.request(url)
-            .responseJSON { response in
-                switch response.result {
-                case .success(let value):
-                    if let dic = value as? [String: String], let audioUrl = dic["audio_url"] {
-                        let destination: DownloadRequest.DownloadFileDestination = { _, _ in
-                            let documentsURL = filePath(withName: "card\(card.cardId).m4a")
-                            return (documentsURL, [.removePreviousFile])
-                        }
-                        
-                        Alamofire.download(audioUrl, to: destination).response { response in
-                            completion?(response.destinationURL)
-                        }
-                    }
-                case .failure(_):
-                    completion?(nil)
-                }
+        Alamofire.download(path, to: destination).response { response in
+            completion?(response.destinationURL)
         }
     }
     

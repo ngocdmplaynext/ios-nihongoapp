@@ -16,6 +16,7 @@ class DeckViewController: UIViewController {
     var decks = [Deck]()
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "トピック"
         
         let isTeacher = (UserDefault.shared.getUserType() ?? student) == teacher
         if isTeacher {

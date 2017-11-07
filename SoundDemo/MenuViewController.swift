@@ -71,7 +71,7 @@ extension MenuViewController: UITableViewDelegate {
                 }
             }))
             
-            alert.addAction(UIAlertAction(title: "いえ", style: .cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: "いいえ", style: .cancel, handler: nil))
             self.present(alert, animated: true, completion: nil)
         case 1:
             let storyboard = UIStoryboard(name: "Main", bundle: nil)

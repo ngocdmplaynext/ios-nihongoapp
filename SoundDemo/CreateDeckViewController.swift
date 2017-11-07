@@ -35,6 +35,8 @@ class CreateDeckViewController: UIViewController, SFSpeechRecognizerDelegate, AV
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.title = "トピック作成"
+        
         recordingSession = AVAudioSession.sharedInstance()
         
         recordingSession.requestRecordPermission() { [unowned self] allowed in
@@ -99,7 +101,7 @@ class CreateDeckViewController: UIViewController, SFSpeechRecognizerDelegate, AV
             NetworkManager.shared.createDeck(themeId: themeId, topic: topic, sentences: sentences, completion: { (error) in
                 
                 if let error = error {
-                    var message: String = ""
+                    var message: String = error.description;
                     if error.code == 1000 {
                         message = "Session Invalid"
                     } else if error.code == 1001 {

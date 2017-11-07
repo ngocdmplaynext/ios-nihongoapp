@@ -120,6 +120,14 @@ class SentenceViewController: UIViewController, SFSpeechRecognizerDelegate, AVAu
         }
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if PlayListPlayer.sharedInstance.isPlaying() {
+            PlayListPlayer.sharedInstance.pause()
+            btnPlayAll.setTitle("Play", for: .normal)
+        }
+    }
+    
     private func prepareRecognizer(locale: Locale) {
         speechRecognizer = SFSpeechRecognizer(locale: locale)!
         speechRecognizer.delegate = self
