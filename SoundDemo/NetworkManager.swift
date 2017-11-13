@@ -277,7 +277,6 @@ class NetworkManager: NSObject {
                     completion?(nil, nil, nil, error as NSError?)
                 }
             }
-            
 
         }
     }

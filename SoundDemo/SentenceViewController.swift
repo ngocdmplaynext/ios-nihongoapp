@@ -204,7 +204,10 @@ class SentenceViewController: UIViewController, SFSpeechRecognizerDelegate, AVAu
         speechRecognizer.recognitionTask(with: request) { (result, error) in
             guard let result = result else {
                 // Recognition failed, so check error for details and handle it
-                print("\(error?.localizedDescription)")
+                let errorMsg = error?.localizedDescription ?? ""
+                let alert = UIAlertController(title: "Alert", message: errorMsg, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
                 return
             }
             
